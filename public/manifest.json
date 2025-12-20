@@ -1,0 +1,21 @@
+{
+  "name": "Web Dev Learn - Web開発学習サイト",
+  "short_name": "WebDevLearn",
+  "description": "HTML、CSS、JavaScript、React、Tailwind CSSを段階的に学べるWeb開発学習サイト。",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -72,6 +72,78 @@ const navSections = [
   },
 ];
 
+// Default Meta Data
+const defaultMeta = {
+  title: "Web技術学習サイト | HTML/CSS/JS/React/Tailwindを効率的に学ぶ",
+  description: "Web開発の基礎から最新技術まで、ステップバイステップで学べる無料学習サイト。HTML, CSS, JavaScript, React, Tailwind CSSのチュートリアルと演習を提供しています。",
+  url: "https://ninjin-sirisiri.github.io/teach-site/",
+};
+
+function updateMetaTags(lesson) {
+  const title = lesson ? `${lesson.title} | Web技術学習サイト` : defaultMeta.title;
+  const description = lesson ? lesson.description : defaultMeta.description;
+  const url = lesson ? `${defaultMeta.url}#${lesson.id}` : defaultMeta.url;
+
+  // Title
+  document.title = title;
+
+  // Meta Description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute("content", description);
+
+  // OGP
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute("content", title);
+
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute("content", description);
+
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute("content", url);
+
+  // Twitter
+  const twTitle = document.querySelector('meta[property="twitter:title"]');
+  if (twTitle) twTitle.setAttribute("content", title);
+
+  const twDesc = document.querySelector('meta[property="twitter:description"]');
+  if (twDesc) twDesc.setAttribute("content", description);
+
+  const twUrl = document.querySelector('meta[property="twitter:url"]');
+  if (twUrl) twUrl.setAttribute("content", url);
+
+  // Structured Data (JSON-LD)
+  let script = document.querySelector('script[type="application/ld+json"][data-dynamic="true"]');
+  if (!script) {
+    script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-dynamic", "true");
+    document.head.appendChild(script);
+  }
+
+  if (lesson) {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      headline: lesson.title,
+      description: lesson.description,
+      url: url,
+      author: {
+        "@type": "Organization",
+        name: "Web Dev Learn",
+      },
+      image: "https://ninjin-sirisiri.github.io/teach-site/banner.png",
+      inLanguage: "ja",
+      audience: {
+        "@type": "EducationalAudience",
+        educationalRole: "student",
+      },
+    };
+    script.textContent = JSON.stringify(jsonLd);
+  } else {
+    script.textContent = "";
+  }
+}
+
 // Render
 function render() {
   const app = document.getElementById("app");
@@ -98,10 +170,10 @@ function renderSidebar() {
         <div class="nav-section">
           <div class="nav-list">
             <div class="nav-item">
-              <div class="nav-link ${!currentLesson ? "active" : ""}" data-page="home">
+              <a href="#" class="nav-link ${!currentLesson ? "active" : ""}">
                 <span class="nav-icon">🏠</span>
                 <span>ホーム</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -115,11 +187,11 @@ function renderSidebar() {
                 .map(
                   (item) => `
                 <div class="nav-item">
-                  <div class="nav-link ${currentLesson === item.id ? "active" : ""}" data-lesson="${item.id}">
+                  <a href="#${item.id}" class="nav-link ${currentLesson === item.id ? "active" : ""}">
                     <span class="nav-icon">${item.icon}</span>
                     <span>${item.label}</span>
                     <span class="nav-completion ${isLessonComplete(item.id) ? "completed" : "incomplete"}">${isLessonComplete(item.id) ? "✓" : ""}</span>
-                  </div>
+                  </a>
                 </div>
               `,
                 )
@@ -182,14 +254,14 @@ function renderHome() {
     ${
       lastVisitedLesson && !isLessonComplete(lastVisitedId)
         ? `
-    <div class="continue-banner" data-lesson="${lastVisitedId}">
+    <div class="continue-banner">
       <div class="continue-text">
         <div class="continue-title">📖 続きから学習</div>
         <div class="continue-subtitle">${lastVisitedLesson.title}</div>
       </div>
-      <button class="continue-button" data-lesson="${lastVisitedId}">
+      <a href="#${lastVisitedId}" class="continue-button">
         続ける →
-      </button>
+      </a>
     </div>
     `
         : ""
@@ -197,88 +269,88 @@ function renderHome() {
 
     <h2 class="home-section-title">📚 まずはここから</h2>
     <div class="cards-grid">
-      <div class="card intro" data-lesson="web-intro">
+      <a href="#web-intro" class="card intro">
         <div class="card-icon">🌐</div>
         <h3 class="card-title">Web開発入門</h3>
         <p class="card-description">Webの仕組みと必要な技術の全体像を理解します。</p>
-      </div>
-      <div class="card intro" data-lesson="modern-web">
+      </a>
+      <a href="#modern-web" class="card intro">
         <div class="card-icon">🚀</div>
         <h3 class="card-title">モダンWeb開発</h3>
         <p class="card-description">React、Tailwindなど現代の技術を概観します。</p>
-      </div>
+      </a>
     </div>
 
     <h2 class="home-section-title">🔤 基礎を学ぶ</h2>
     <div class="cards-grid">
-      <div class="card html" data-lesson="html-intro">
+      <a href="#html-intro" class="card html">
         <div class="card-icon">📖</div>
         <h3 class="card-title">HTMLとは</h3>
         <p class="card-description">HTMLの役割となぜ重要なのかを理解します。</p>
-      </div>
-      <div class="card html" data-lesson="html-basics">
+      </a>
+      <a href="#html-basics" class="card html">
         <div class="card-icon">📄</div>
         <h3 class="card-title">HTML構文</h3>
         <p class="card-description">タグ、属性、フォームなどの具体的な書き方を学びます。</p>
-      </div>
-      <div class="card css" data-lesson="css-intro">
+      </a>
+      <a href="#css-intro" class="card css">
         <div class="card-icon">📖</div>
         <h3 class="card-title">CSSとは</h3>
         <p class="card-description">CSSの仕組みとなぜ必要なのかを理解します。</p>
-      </div>
-      <div class="card css" data-lesson="css-basics">
+      </a>
+      <a href="#css-basics" class="card css">
         <div class="card-icon">🎨</div>
         <h3 class="card-title">CSS構文</h3>
         <p class="card-description">Flexbox、Grid、アニメーションなどを習得します。</p>
-      </div>
-      <div class="card js" data-lesson="js-intro">
+      </a>
+      <a href="#js-intro" class="card js">
         <div class="card-icon">📖</div>
         <h3 class="card-title">JavaScriptとは</h3>
         <p class="card-description">JavaScriptの特徴とできることを理解します。</p>
-      </div>
-      <div class="card js" data-lesson="js-basics">
+      </a>
+      <a href="#js-basics" class="card js">
         <div class="card-icon">⚡</div>
         <h3 class="card-title">JavaScript構文</h3>
         <p class="card-description">変数、関数、DOM操作などを実装します。</p>
-      </div>
-      <div class="card js" data-lesson="js-advanced">
+      </a>
+      <a href="#js-advanced" class="card js">
         <div class="card-icon">🔥</div>
         <h3 class="card-title">JavaScript応用</h3>
         <p class="card-description">非同期処理、モジュール、エラーハンドリングを学びます。</p>
-      </div>
+      </a>
     </div>
 
     <h2 class="home-section-title">🛠️ ツール</h2>
     <div class="cards-grid">
-      <div class="card git" data-lesson="git-intro">
+      <a href="#git-intro" class="card git">
         <div class="card-icon">🔧</div>
         <h3 class="card-title">Git入門</h3>
         <p class="card-description">バージョン管理の基本とコマンドをマスターします。</p>
-      </div>
-      <div class="card git" data-lesson="github-basics">
+      </a>
+      <a href="#github-basics" class="card git">
         <div class="card-icon">🐙</div>
         <h3 class="card-title">GitHubの基本</h3>
         <p class="card-description">コードの共有と共同開発のワークフローを学びます。</p>
-      </div>
-      <div class="card intro" data-lesson="deploy-guide">
+      </a>
+      <a href="#deploy-guide" class="card intro">
         <div class="card-icon">🚀</div>
         <h3 class="card-title">デプロイガイド</h3>
         <p class="card-description">GitHub Pages、Vercel、Netlifyで公開します。</p>
-      </div>
+      </a>
     </div>
 
     <h2 class="home-section-title">⚙️ フレームワーク</h2>
     <div class="cards-grid">
-      <div class="card react" data-lesson="react-basics">
+      <a href="#react-basics" class="card react">
         <div class="card-icon">⚛️</div>
         <h3 class="card-title">React入門</h3>
         <p class="card-description">コンポーネントベースのUI構築を学びます。</p>
-      </div>
-      <div class="card tailwind" data-lesson="tailwind-basics">
+      </a>
+      <a href="#tailwind-basics" class="card tailwind">
         <div class="card-icon">🌊</div>
         <h3 class="card-title">Tailwind CSS</h3>
         <p class="card-description">ユーティリティファーストのモダンなCSS手法を習得します。</p>
-      </div>
+      </a>
     </div>
   `;
 }
@@ -347,13 +419,13 @@ function renderLesson() {
       <div class="lesson-nav">
         ${
           prevLesson
-            ? `<button class="nav-button" data-lesson="${prevLesson.id}">← ${prevLesson.title}</button>`
-            : `<button class="nav-button" data-page="home">← ホーム</button>`
+            ? `<a href="#${prevLesson.id}" class="nav-button">← ${prevLesson.title}</a>`
+            : `<a href="#" class="nav-button">← ホーム</a>`
         }
         ${
           nextLesson
-            ? `<button class="nav-button primary" data-lesson="${nextLesson.id}">${nextLesson.title} →</button>`
-            : `<button class="nav-button primary" data-page="home">完了 🎉</button>`
+            ? `<a href="#${nextLesson.id}" class="nav-button primary">${nextLesson.title} →</a>`
+            : `<a href="#" class="nav-button primary">完了 🎉</a>`
         }
       </div>
     </div>
@@ -361,28 +433,38 @@ function renderLesson() {
 }
 
 function attachEventListeners() {
-  // Navigation links
-  document.querySelectorAll("[data-lesson]").forEach((el) => {
-    el.addEventListener("click", () => {
-      currentLesson = el.dataset.lesson;
-      sidebarOpen = false;
-      // Record last visited lesson
-      setLastVisited(currentLesson);
-      render();
-      // Ensure scroll happens after DOM paint is complete
-      setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
-    });
-  });
-
-  document.querySelectorAll('[data-page="home"]').forEach((el) => {
-    el.addEventListener("click", () => {
+  // Routing logic
+  function handleRoute() {
+    const hash = window.location.hash.slice(1);
+    let lesson = null;
+    if (hash) {
+      lesson = getLessonById(hash);
+      if (lesson) {
+        currentLesson = hash;
+        setLastVisited(currentLesson);
+      } else {
+        currentLesson = null;
+      }
+    } else {
       currentLesson = null;
-      sidebarOpen = false;
-      render();
-      // Ensure scroll happens after DOM paint is complete
-      setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
-    });
-  });
+    }
+    
+    updateMetaTags(lesson);
+
+    sidebarOpen = false;
+    render();
+    // Ensure scroll happens after DOM paint is complete
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
+  }
+
+  window.removeEventListener("hashchange", handleRoute); // Prevent duplicate listeners if re-attached
+  window.addEventListener("hashchange", handleRoute);
+
+  // Initial routing
+  if (!window.initialRouteHandled) {
+    handleRoute();
+    window.initialRouteHandled = true;
+  }
 
   // Mobile menu
   const menuToggle = document.getElementById("menuToggle");
