@@ -222,7 +222,17 @@ npx tailwindcss init -p</code></pre>
 
     <div class="content-section">
       <h2 class="section-title">レスポンシブデザイン</h2>
-      <p class="content-text">プレフィックスを付けると特定の画面サイズ以上で適用されます。</p>
+      <p class="content-text">プレフィックスを付けると特定の画面サイズ以上で適用されます。Tailwindはモバイルファーストで設計されています。</p>
+      <div class="visual-diagram">
+        <div class="diagram-label">ブレイクポイントのイメージ</div>
+        <div class="responsive-viz">
+          <div class="resp-bar">Mobile (base)</div>
+          <div class="resp-bar sm active">sm (640px)</div>
+          <div class="resp-bar md active">md (768px)</div>
+          <div class="resp-bar lg active">lg (1024px)</div>
+          <div class="resp-bar xl active">xl (1280px)</div>
+        </div>
+      </div>
       <div class="table-wrapper">
         <table>
           <thead>

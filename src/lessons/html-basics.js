@@ -138,6 +138,16 @@ export const htmlBasics = {
     <div class="content-section">
       <h2 class="section-title">セマンティックHTML</h2>
       <p class="content-text">セマンティック（意味のある）タグを使うと、検索エンジンやスクリーンリーダーがページ構造を理解しやすくなります。</p>
+      <div class="visual-diagram">
+        <div class="diagram-label">一般的なページ構成の例</div>
+        <div class="semantic-layout">
+          <div class="layout-item layout-header">header</div>
+          <div class="layout-item layout-nav">nav</div>
+          <div class="layout-item layout-main">main</div>
+          <div class="layout-item layout-aside">aside</div>
+          <div class="layout-item layout-footer">footer</div>
+        </div>
+      </div>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang">HTML</span>

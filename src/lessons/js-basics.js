@@ -14,6 +14,22 @@ export const jsBasics = {
 
     <div class="content-section">
       <h2 class="section-title">変数の宣言</h2>
+      <p class="content-text">
+        変数とは、データを入れる<strong>箱</strong>のようなものです。JavaScriptでは <code>const</code> や <code>let</code> を使って変数を宣言します。
+      </p>
+      <div class="visual-diagram">
+        <div class="diagram-label">変数のイメージ</div>
+        <div class="var-container">
+          <div class="var-box">
+            <div class="var-name">name</div>
+            <div class="var-value">"田中"</div>
+          </div>
+          <div class="var-box">
+            <div class="var-name">age</div>
+            <div class="var-value">25</div>
+          </div>
+        </div>
+      </div>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang">JavaScript</span>

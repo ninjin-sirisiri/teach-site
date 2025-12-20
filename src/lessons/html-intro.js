@@ -21,6 +21,35 @@ export const htmlIntro = {
           </div>
         </div>
       </div>
+    <div class="content-section">
+      <h2 class="section-title">HTMLの構造（DOMツリー）</h2>
+      <p class="content-text">
+        HTMLは親子関係を持つ<strong>ツリー構造</strong>になっています。これをDOM（Document Object Model）ツリーと呼びます。
+      </p>
+      <div class="visual-diagram">
+        <div class="diagram-label">DOMツリーのイメージ</div>
+        <div class="dom-tree">
+          <div class="dom-node root">&lt;html&gt;</div>
+          <div class="dom-children">
+            <div class="dom-tree">
+              <div class="dom-node">&lt;head&gt;</div>
+              <div class="dom-children">
+                <div class="dom-node">&lt;title&gt;</div>
+              </div>
+            </div>
+            <div class="dom-tree">
+              <div class="dom-node">&lt;body&gt;</div>
+              <div class="dom-children">
+                <div class="dom-node">&lt;h1&gt;</div>
+                <div class="dom-node">&lt;p&gt;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="content-text">
+        このように、タグの中に別のタグを入れることで、複雑な構造を作り上げていきます。
+      </p>
     </div>
 
     <div class="content-section">

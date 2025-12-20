@@ -71,6 +71,21 @@ export const cssBasics = {
     <div class="content-section">
       <h2 class="section-title">ボックスモデル</h2>
       <p class="content-text">すべてのHTML要素は「ボックス」として扱われます。内側から<strong>content → padding → border → margin</strong>の順です。</p>
+      <div class="visual-diagram">
+        <div class="diagram-label">ボックスモデルの仕組み</div>
+        <div class="box-model-container">
+          <div class="box-margin">
+            <span class="box-label">Margin</span>
+            <div class="box-border">
+              <span class="box-label">Border</span>
+              <div class="box-padding">
+                <span class="box-label">Padding</span>
+                <div class="box-content">Content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang">CSS</span>
