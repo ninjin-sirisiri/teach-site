@@ -432,40 +432,30 @@ function renderLesson() {
   `;
 }
 
-function attachEventListeners() {
-  // Routing logic
-  function handleRoute() {
-    const hash = window.location.hash.slice(1);
-    let lesson = null;
-    if (hash) {
-      lesson = getLessonById(hash);
-      if (lesson) {
-        currentLesson = hash;
-        setLastVisited(currentLesson);
-      } else {
-        currentLesson = null;
-      }
+function handleRoute() {
+  const hash = window.location.hash.slice(1);
+  let lesson = null;
+  if (hash) {
+    lesson = getLessonById(hash);
+    if (lesson) {
+      currentLesson = hash;
+      setLastVisited(currentLesson);
     } else {
       currentLesson = null;
     }
-    
-    updateMetaTags(lesson);
-
-    sidebarOpen = false;
-    render();
-    // Ensure scroll happens after DOM paint is complete
-    setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
+  } else {
+    currentLesson = null;
   }
+  
+  updateMetaTags(lesson);
 
-  window.removeEventListener("hashchange", handleRoute); // Prevent duplicate listeners if re-attached
-  window.addEventListener("hashchange", handleRoute);
+  sidebarOpen = false;
+  render();
+  // Ensure scroll happens after DOM paint is complete
+  setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
+}
 
-  // Initial routing
-  if (!window.initialRouteHandled) {
-    handleRoute();
-    window.initialRouteHandled = true;
-  }
-
+function attachEventListeners() {
   // Mobile menu
   const menuToggle = document.getElementById("menuToggle");
   if (menuToggle) {
@@ -535,4 +525,5 @@ window.copyCode = function (btn) {
 };
 
 // Initialize
-render();
+window.addEventListener("hashchange", handleRoute);
+handleRoute();
