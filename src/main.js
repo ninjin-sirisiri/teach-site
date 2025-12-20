@@ -161,7 +161,7 @@ function renderHome() {
         <p class="hero-subtitle">HTML、CSS、JavaScriptの基礎からReact、Tailwind CSSまで。モダンなWeb開発のすべてを、ここで手に入れよう。</p>
       </div>
       <div class="hero-image">
-        <img src="banner.png" alt="Web Development" style="width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow-xl);">
+        <img src="banner.png" alt="Web Development" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
       </div>
     </div>
     
