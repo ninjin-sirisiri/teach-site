@@ -331,7 +331,7 @@ npx tailwindcss init -p</code></pre>
         </div>
         <div class="code-content">
 <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"max-w-sm rounded-xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;img</span> <span class="attr">class</span>=<span class="string">"w-full h-48 object-cover"</span> <span class="attr">src</span>=<span class="string">"/card.png"</span> <span class="attr">alt</span>=<span class="string">""</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">class</span>=<span class="string">"w-full h-48 object-cover"</span> <span class="attr">src</span>=<span class="string">"card.png"</span> <span class="attr">alt</span>=<span class="string">""</span><span class="tag">/&gt;</span>
   <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"p-6"</span><span class="tag">&gt;</span>
     <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="string">"text-sm text-blue-500 font-semibold"</span><span class="tag">&gt;</span>Travel<span class="tag">&lt;/span&gt;</span>
     <span class="tag">&lt;h2</span> <span class="attr">class</span>=<span class="string">"text-xl font-bold text-gray-900 mt-2"</span><span class="tag">&gt;</span>静かな湖畔のコテージ<span class="tag">&lt;/h2&gt;</span>
@@ -350,7 +350,7 @@ npx tailwindcss init -p</code></pre>
         <div class="demo-label">プレビュー</div>
         <!-- Tailwind Demo (styled with inline-styles or existing classes if possible, but the app doesn't have Tailwind loaded globally. I'll use a recreation with CSS classes) -->
         <div style="max-width: 320px; background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color);">
-          <img src="/card.png" style="width: 100%; height: 180px; object-fit: cover;" alt="Demo Image">
+          <img src="card.png" style="width: 100%; height: 180px; object-fit: cover;" alt="Demo Image">
           <div style="padding: 1.5rem;">
             <span style="font-size: 0.8rem; color: #6366f1; font-weight: 600;">Travel</span>
             <h3 style="font-size: 1.25rem; font-weight: 800; margin-top: 0.5rem; color: #1e293b;">静かな湖畔のコテージ</h3>
