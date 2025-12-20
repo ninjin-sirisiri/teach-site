@@ -6,6 +6,8 @@ import { cssIntro } from "./css-intro.js";
 import { cssBasics } from "./css-basics.js";
 import { jsIntro } from "./js-intro.js";
 import { jsBasics } from "./js-basics.js";
+import { gitIntro } from "./git-intro.js";
+import { githubBasics } from "./github-basics.js";
 import { reactBasics } from "./react-basics.js";
 import { tailwindBasics } from "./tailwind-basics.js";
 
@@ -18,6 +20,8 @@ export const lessons = [
   cssBasics,
   jsIntro,
   jsBasics,
+  gitIntro,
+  githubBasics,
   reactBasics,
   tailwindBasics,
 ];

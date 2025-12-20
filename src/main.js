@@ -47,6 +47,13 @@ const navSections = [
     ],
   },
   {
+    title: "ツール",
+    items: [
+      { id: "git-intro", icon: "🔧", label: "Git入門", badge: "git" },
+      { id: "github-basics", icon: "🐙", label: "GitHubの基本", badge: "git" },
+    ],
+  },
+  {
     title: "フレームワーク",
     items: [
       { id: "react-basics", icon: "⚛️", label: "React入門", badge: "react" },
@@ -123,6 +130,7 @@ function getBadgeLabel(badge) {
     html: "HTML",
     css: "CSS",
     js: "JS",
+    git: "Git",
     react: "React",
     tailwind: "TW",
   };
@@ -186,6 +194,20 @@ function renderHome() {
         <div class="card-icon">⚡</div>
         <h3 class="card-title">JavaScript構文</h3>
         <p class="card-description">変数、関数、DOM操作などを実装します。</p>
+      </div>
+    </div>
+
+    <h2 class="home-section-title">🛠️ ツール</h2>
+    <div class="cards-grid">
+      <div class="card git" data-lesson="git-intro">
+        <div class="card-icon">🔧</div>
+        <h3 class="card-title">Git入門</h3>
+        <p class="card-description">バージョン管理の基本とコマンドをマスターします。</p>
+      </div>
+      <div class="card git" data-lesson="github-basics">
+        <div class="card-icon">🐙</div>
+        <h3 class="card-title">GitHubの基本</h3>
+        <p class="card-description">コードの共有と共同開発のワークフローを学びます。</p>
       </div>
     </div>
 

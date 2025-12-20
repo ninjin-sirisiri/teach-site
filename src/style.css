@@ -15,6 +15,7 @@
   --color-js: #f7df1e;
   --color-react: #61dafb;
   --color-tailwind: #38b2ac;
+  --color-git: #f05032;
   
   /* Backgrounds */
   --bg-primary: #ffffff;
@@ -238,6 +239,7 @@ a:hover {
 .nav-badge.react, .lesson-badge.react { color: #00708a; background: #f0fbff; border-color: #ccf1ff; }
 .nav-badge.tailwind, .lesson-badge.tailwind { color: #1a635f; background: #f0fdfc; border-color: #ccf7f5; }
 .nav-badge.intro, .lesson-badge.intro { color: var(--color-primary); background: #f5f3ff; border-color: #ddd6fe; }
+.nav-badge.git, .lesson-badge.git { color: #8a2e1c; background: #fff5f3; border-color: #ffd8d0; }
 
 /* ===== Main Content ===== */
 .main-content {
@@ -347,6 +349,10 @@ a:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
   border-color: var(--color-primary-light);
+}
+
+.card.git:hover {
+  border-color: var(--color-git);
 }
 
 .card-icon {
