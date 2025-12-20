@@ -1,5 +1,13 @@
 import "./style.css";
 import { lessons, getLessonById } from "./lessons/index.js";
+import {
+  isLessonComplete,
+  toggleLessonComplete,
+  setLastVisited,
+  getLastVisited,
+  getCompletedCount,
+  getProgressPercentage,
+} from "./progress.js";
 
 // Utils
 function escapeHTML(str) {
@@ -44,6 +52,7 @@ const navSections = [
     items: [
       { id: "js-intro", icon: "📖", label: "JavaScriptとは", badge: "js" },
       { id: "js-basics", icon: "⚡", label: "JavaScript構文", badge: "js" },
+      { id: "js-advanced", icon: "🔥", label: "JavaScript応用", badge: "js" },
     ],
   },
   {
@@ -51,6 +60,7 @@ const navSections = [
     items: [
       { id: "git-intro", icon: "🔧", label: "Git入門", badge: "git" },
       { id: "github-basics", icon: "🐙", label: "GitHubの基本", badge: "git" },
+      { id: "deploy-guide", icon: "🚀", label: "デプロイガイド", badge: "intro" },
     ],
   },
   {
@@ -108,7 +118,7 @@ function renderSidebar() {
                   <div class="nav-link ${currentLesson === item.id ? "active" : ""}" data-lesson="${item.id}">
                     <span class="nav-icon">${item.icon}</span>
                     <span>${item.label}</span>
-                    <span class="nav-badge ${item.badge}">${getBadgeLabel(item.badge)}</span>
+                    <span class="nav-completion ${isLessonComplete(item.id) ? "completed" : "incomplete"}">${isLessonComplete(item.id) ? "✓" : ""}</span>
                   </div>
                 </div>
               `,
@@ -138,6 +148,12 @@ function getBadgeLabel(badge) {
 }
 
 function renderHome() {
+  const totalLessons = lessons.length;
+  const completedCount = getCompletedCount();
+  const progressPercent = getProgressPercentage(totalLessons);
+  const lastVisitedId = getLastVisited();
+  const lastVisitedLesson = lastVisitedId ? getLessonById(lastVisitedId) : null;
+
   return `
     <div class="hero">
       <div class="hero-content">
@@ -149,6 +165,36 @@ function renderHome() {
       </div>
     </div>
     
+    <div class="progress-section">
+      <div class="progress-header">
+        <div class="progress-title">
+          <span>📊</span>
+          <span>学習進捗</span>
+        </div>
+        <div class="progress-stats">${completedCount} / ${totalLessons} レッスン完了</div>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: ${progressPercent}%"></div>
+      </div>
+      <div class="progress-percentage">${progressPercent}% 完了</div>
+    </div>
+
+    ${
+      lastVisitedLesson && !isLessonComplete(lastVisitedId)
+        ? `
+    <div class="continue-banner" data-lesson="${lastVisitedId}">
+      <div class="continue-text">
+        <div class="continue-title">📖 続きから学習</div>
+        <div class="continue-subtitle">${lastVisitedLesson.title}</div>
+      </div>
+      <button class="continue-button" data-lesson="${lastVisitedId}">
+        続ける →
+      </button>
+    </div>
+    `
+        : ""
+    }
+
     <h2 class="home-section-title">📚 まずはここから</h2>
     <div class="cards-grid">
       <div class="card intro" data-lesson="web-intro">
@@ -195,6 +241,11 @@ function renderHome() {
         <h3 class="card-title">JavaScript構文</h3>
         <p class="card-description">変数、関数、DOM操作などを実装します。</p>
       </div>
+      <div class="card js" data-lesson="js-advanced">
+        <div class="card-icon">🔥</div>
+        <h3 class="card-title">JavaScript応用</h3>
+        <p class="card-description">非同期処理、モジュール、エラーハンドリングを学びます。</p>
+      </div>
     </div>
 
     <h2 class="home-section-title">🛠️ ツール</h2>
@@ -208,6 +259,11 @@ function renderHome() {
         <div class="card-icon">🐙</div>
         <h3 class="card-title">GitHubの基本</h3>
         <p class="card-description">コードの共有と共同開発のワークフローを学びます。</p>
+      </div>
+      <div class="card intro" data-lesson="deploy-guide">
+        <div class="card-icon">🚀</div>
+        <h3 class="card-title">デプロイガイド</h3>
+        <p class="card-description">GitHub Pages、Vercel、Netlifyで公開します。</p>
       </div>
     </div>
 
@@ -234,6 +290,7 @@ function renderLesson() {
   const currentIndex = lessons.findIndex((l) => l.id === currentLesson);
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+  const isComplete = isLessonComplete(currentLesson);
 
   return `
     <div class="lesson">
@@ -281,6 +338,12 @@ function renderLesson() {
           : ""
       }
 
+      <div class="lesson-complete-section">
+        <button class="complete-button ${isComplete ? "completed" : "incomplete"}" id="completeBtn">
+          ${isComplete ? "✓ 完了済み" : "✓ このレッスンを完了としてマーク"}
+        </button>
+      </div>
+
       <div class="lesson-nav">
         ${
           prevLesson
@@ -303,6 +366,8 @@ function attachEventListeners() {
     el.addEventListener("click", () => {
       currentLesson = el.dataset.lesson;
       sidebarOpen = false;
+      // Record last visited lesson
+      setLastVisited(currentLesson);
       render();
       // Ensure scroll happens after DOM paint is complete
       setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" }), 0);
@@ -325,6 +390,15 @@ function attachEventListeners() {
     menuToggle.addEventListener("click", () => {
       sidebarOpen = !sidebarOpen;
       document.getElementById("sidebar").classList.toggle("open", sidebarOpen);
+    });
+  }
+
+  // Complete button
+  const completeBtn = document.getElementById("completeBtn");
+  if (completeBtn) {
+    completeBtn.addEventListener("click", () => {
+      toggleLessonComplete(currentLesson);
+      render();
     });
   }
 
