@@ -17,7 +17,8 @@ function escapeHTML(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/'/g, "&#039;")
+    .replace(/\n/g, "<br>");
 }
 
 // State
@@ -56,6 +57,13 @@ const navSections = [
     ],
   },
   {
+    title: "TypeScript",
+    items: [
+      { id: "ts-intro", icon: "📖", label: "TypeScriptとは", badge: "ts" },
+      { id: "ts-basics", icon: "📘", label: "TypeScript基礎", badge: "ts" },
+    ],
+  },
+  {
     title: "ツール",
     items: [
       { id: "git-intro", icon: "🔧", label: "Git入門", badge: "git" },
@@ -75,7 +83,8 @@ const navSections = [
 // Default Meta Data
 const defaultMeta = {
   title: "Web技術学習サイト | HTML/CSS/JS/React/Tailwindを効率的に学ぶ",
-  description: "Web開発の基礎から最新技術まで、ステップバイステップで学べる無料学習サイト。HTML, CSS, JavaScript, React, Tailwind CSSのチュートリアルと演習を提供しています。",
+  description:
+    "Web開発の基礎から最新技術まで、ステップバイステップで学べる無料学習サイト。HTML, CSS, JavaScript, React, Tailwind CSSのチュートリアルと演習を提供しています。",
   url: "https://ninjin-sirisiri.github.io/teach-site/",
 };
 
@@ -212,6 +221,7 @@ function getBadgeLabel(badge) {
     html: "HTML",
     css: "CSS",
     js: "JS",
+    ts: "TS",
     git: "Git",
     react: "React",
     tailwind: "TW",
@@ -317,6 +327,20 @@ function renderHome() {
         <div class="card-icon">🔥</div>
         <h3 class="card-title">JavaScript応用</h3>
         <p class="card-description">非同期処理、モジュール、エラーハンドリングを学びます。</p>
+      </a>
+    </div>
+
+    <h2 class="home-section-title">🔷 TypeScript</h2>
+    <div class="cards-grid">
+      <a href="#ts-intro" class="card ts">
+        <div class="card-icon">📖</div>
+        <h3 class="card-title">TypeScriptとは</h3>
+        <p class="card-description">TypeScriptの概要と特徴、JavaScriptとの関係を理解します。</p>
+      </a>
+      <a href="#ts-basics" class="card ts">
+        <div class="card-icon">📘</div>
+        <h3 class="card-title">TypeScript基礎</h3>
+        <p class="card-description">基本的な型、インターフェース、Union型を学びます。</p>
       </a>
     </div>
 
@@ -446,7 +470,7 @@ function handleRoute() {
   } else {
     currentLesson = null;
   }
-  
+
   updateMetaTags(lesson);
 
   sidebarOpen = false;

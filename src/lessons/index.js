@@ -7,6 +7,8 @@ import { cssBasics } from "./css-basics.js";
 import { jsIntro } from "./js-intro.js";
 import { jsBasics } from "./js-basics.js";
 import { jsAdvanced } from "./js-advanced.js";
+import { tsIntro } from "./ts-intro.js";
+import { tsBasics } from "./ts-basics.js";
 import { gitIntro } from "./git-intro.js";
 import { githubBasics } from "./github-basics.js";
 import { deployGuide } from "./deploy-guide.js";
@@ -23,6 +25,8 @@ export const lessons = [
   jsIntro,
   jsBasics,
   jsAdvanced,
+  tsIntro,
+  tsBasics,
   gitIntro,
   githubBasics,
   deployGuide,

@@ -13,6 +13,7 @@
   --color-html: #e44d26;
   --color-css: #264de4;
   --color-js: #d9c300;
+  --color-ts: #3178c6;
   --color-react: #00d8ff;
   --color-tailwind: #06b6d4;
   --color-git: #f05032;
@@ -388,6 +389,14 @@ a:hover {
   background: var(--bg-tertiary);
   color: var(--text-muted);
 }
+
+.lesson-badge.html { background: rgba(228, 77, 38, 0.1); color: var(--color-html); }
+.lesson-badge.css { background: rgba(38, 77, 228, 0.1); color: var(--color-css); }
+.lesson-badge.js { background: rgba(217, 195, 0, 0.1); color: var(--color-js); }
+.lesson-badge.ts { background: rgba(49, 120, 198, 0.1); color: var(--color-ts); }
+.lesson-badge.react { background: rgba(0, 216, 255, 0.1); color: var(--color-react); }
+.lesson-badge.tailwind { background: rgba(6, 182, 212, 0.1); color: var(--color-tailwind); }
+.lesson-badge.git { background: rgba(240, 80, 50, 0.1); color: var(--color-git); }
 
 .lesson-title {
   font-size: 2.25rem;
