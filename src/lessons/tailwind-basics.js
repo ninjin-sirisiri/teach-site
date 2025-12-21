@@ -1,7 +1,7 @@
 export const tailwindBasics = {
   id: "tailwind-basics",
   category: "tailwind",
-  title: "Tailwind CSS入門",
+  title: "Tailwind CSS v4入門",
   description: "ユーティリティファーストのCSSフレームワークで効率的にスタイリングを学びましょう",
   content: `
     <div class="content-section">
@@ -28,26 +28,23 @@ export const tailwindBasics = {
         </div>
         <div class="code-content">
 <pre><code><span class="comment"># Viteプロジェクトにインストール</span>
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p</code></pre>
+npm install tailwindcss @tailwindcss/vite</code></pre>
         </div>
       </div>
       <div class="code-block">
         <div class="code-header">
-          <span class="code-lang">tailwind.config.js</span>
+          <span class="code-lang">vite.config.js</span>
           <button class="code-copy" onclick="copyCode(this)">コピー</button>
         </div>
         <div class="code-content">
-<pre><code><span class="keyword">export default</span> {
-  content: [
-    <span class="string">"./index.html"</span>,
-    <span class="string">"./src/**/*.{js,jsx}"</span>,
+<pre><code><span class="keyword">import</span> { defineConfig } from <span class="string">'vite'</span>
+<span class="keyword">import</span> tailwindcss from <span class="string">'@tailwindcss/vite'</span>
+
+<span class="keyword">export default</span> defineConfig({
+  plugins: [
+    tailwindcss(),
   ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}</code></pre>
+})</code></pre>
         </div>
       </div>
       <div class="code-block">
@@ -56,9 +53,7 @@ npx tailwindcss init -p</code></pre>
           <button class="code-copy" onclick="copyCode(this)">コピー</button>
         </div>
         <div class="code-content">
-<pre><code><span class="keyword">@tailwind</span> base;
-<span class="keyword">@tailwind</span> components;
-<span class="keyword">@tailwind</span> utilities;</code></pre>
+<pre><code><span class="keyword">@import</span> <span class="string">"tailwindcss"</span>;</code></pre>
         </div>
       </div>
     </div>
