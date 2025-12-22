@@ -242,6 +242,7 @@ a:hover {
 .main-content {
   margin-left: var(--sidebar-width);
   flex: 1;
+  min-width: 0; /* Prevents flex item from expanding beyond screen width */
   padding: var(--spacing-2xl);
   max-width: 960px; 
 }
@@ -441,6 +442,7 @@ a:hover {
   margin-bottom: var(--spacing-lg);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 100%;
 }
 
 .code-header {
