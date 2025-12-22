@@ -10,6 +10,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../components/Layout.astro';
 import Quiz from '../../components/Quiz.astro';
 import type { Exercise } from '../../types/lesson';
+import { getAllLessonIds, getNavItemById, TOTAL_LESSONS } from '../../data/navigation';
 
 // 静的パスを生成
 export async function getStaticPaths() {
@@ -28,49 +29,18 @@ interface Props {
 const { lesson } = Astro.props;
 const { id, title, description, content, exercises, category } = lesson.data;
 
-// 前後のレッスンを取得するためのレッスン順序
-const lessonOrder = [
-  'web-intro',
-  'modern-web',
-  'html-intro',
-  'html-basics',
-  'css-intro',
-  'css-basics',
-  'js-intro',
-  'js-basics',
-  'js-advanced',
-  'ts-intro',
-  'ts-basics',
-  'git-intro',
-  'github-basics',
-  'deploy-guide',
-  'react-basics',
-  'tailwind-basics',
-];
+// navigation.tsから正しいレッスン順序を取得
+const lessonOrder = getAllLessonIds();
 
 const currentIndex = lessonOrder.indexOf(id);
 const prevLessonId = currentIndex > 0 ? lessonOrder[currentIndex - 1] : null;
 const nextLessonId = currentIndex < lessonOrder.length - 1 ? lessonOrder[currentIndex + 1] : null;
 
-// レッスンタイトルのマップ
-const lessonTitles: Record<string, string> = {
-  'web-intro': 'Web開発入門',
-  'modern-web': 'モダンWeb開発',
-  'html-intro': 'HTMLとは',
-  'html-basics': 'HTML構文',
-  'css-intro': 'CSSとは',
-  'css-basics': 'CSS構文',
-  'js-intro': 'JavaScriptとは',
-  'js-basics': 'JavaScript構文',
-  'js-advanced': 'JavaScript応用',
-  'ts-intro': 'TypeScriptとは',
-  'ts-basics': 'TypeScript基礎',
-  'git-intro': 'Git入門',
-  'github-basics': 'GitHubの基本',
-  'deploy-guide': 'デプロイガイド',
-  'react-basics': 'React入門',
-  'tailwind-basics': 'Tailwind CSS',
-};
+// ナビゲーションアイテムからタイトルを取得するヘルパー関数
+function getLessonTitle(lessonId: string): string {
+  const navItem = getNavItemById(lessonId);
+  return navItem?.label || lessonId;
+}
 
 const basePath = import.meta.env.BASE_URL || '/teach-site/';
 
@@ -101,7 +71,7 @@ const categoryColors: Record<string, string> = {
           {category.toUpperCase()}
         </span>
         <span class="lesson-number">
-          Lesson {currentIndex + 1} / {lessonOrder.length}
+          Lesson {currentIndex + 1} / {TOTAL_LESSONS}
         </span>
       </div>
       <h1 class="lesson-title">{title}</h1>
@@ -133,7 +103,7 @@ const categoryColors: Record<string, string> = {
         <a href={`${basePath}lessons/${prevLessonId}/`} class="nav-button prev">
           <span class="nav-arrow">←</span>
           <span class="nav-label">前のレッスン</span>
-          <span class="nav-title">{lessonTitles[prevLessonId]}</span>
+          <span class="nav-title">{getLessonTitle(prevLessonId)}</span>
         </a>
       ) : (
         <div class="nav-button placeholder"></div>
@@ -147,7 +117,7 @@ const categoryColors: Record<string, string> = {
       {nextLessonId ? (
         <a href={`${basePath}lessons/${nextLessonId}/`} class="nav-button next">
           <span class="nav-label">次のレッスン</span>
-          <span class="nav-title">{lessonTitles[nextLessonId]}</span>
+          <span class="nav-title">{getLessonTitle(nextLessonId)}</span>
           <span class="nav-arrow">→</span>
         </a>
       ) : (
