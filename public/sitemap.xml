@@ -1,92 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- ホームページ -->
   <url>
     <loc>https://ninjin-sirisiri.github.io/teach-site/</loc>
-    <lastmod>2025-12-20</lastmod>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Web開発入門 -->
   <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#web-intro</loc>
-    <lastmod>2025-12-20</lastmod>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/web-intro/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/modern-web/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- HTML -->
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/html-intro/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/html-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- CSS -->
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/css-intro/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/css-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- JavaScript -->
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/js-intro/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/js-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#modern-web</loc>
-    <lastmod>2025-12-20</lastmod>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/js-advanced/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- TypeScript -->
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/ts-intro/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/ts-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Git/GitHub -->
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/git-intro/</loc>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#html-intro</loc>
-    <lastmod>2025-12-20</lastmod>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/github-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#html-basics</loc>
-    <lastmod>2025-12-20</lastmod>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/deploy-guide/</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- React & Tailwind -->
+  <url>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/react-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#css-intro</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#css-basics</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#js-intro</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#js-basics</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#js-advanced</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#git-intro</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#github-basics</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#deploy-guide</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#react-basics</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ninjin-sirisiri.github.io/teach-site/#tailwind-basics</loc>
-    <lastmod>2025-12-20</lastmod>
+    <loc>https://ninjin-sirisiri.github.io/teach-site/lessons/tailwind-basics/</loc>
+    <lastmod>2025-12-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
