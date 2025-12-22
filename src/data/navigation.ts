@@ -50,6 +50,8 @@ export const navSections: NavSection[] = [
   {
     title: 'ツール',
     items: [
+      { id: 'nodejs-intro', icon: '🟢', label: 'Node.js入門', badge: 'nodejs' },
+      { id: 'npm-basics', icon: '📦', label: 'npm基礎', badge: 'nodejs' },
       { id: 'git-intro', icon: '🔧', label: 'Git入門', badge: 'git' },
       { id: 'github-basics', icon: '🐙', label: 'GitHubの基本', badge: 'git' },
       { id: 'deploy-guide', icon: '🚀', label: 'デプロイガイド', badge: 'intro' },
@@ -99,6 +101,6 @@ export function getNavItemById(id: string) {
 
 /**
  * 全レッスン数を取得
- * 23レッスン: 入門(2) + HTML(2) + CSS(2) + JavaScript(3) + TypeScript(2) + ツール(3) + React(8) + その他(1)
+ * 25レッスン: 入門(2) + HTML(2) + CSS(2) + JavaScript(3) + TypeScript(2) + ツール(5) + React(8) + その他(1)
  */
-export const TOTAL_LESSONS = 23;
+export const TOTAL_LESSONS = 25;

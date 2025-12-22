@@ -233,8 +233,8 @@ describe('Property 3: Navigation Contains All React Lessons', () => {
     expect(reactSection!.items.length).toBe(8);
   });
 
-  it('should have correct TOTAL_LESSONS count (23)', () => {
-    expect(TOTAL_LESSONS).toBe(23);
+  it('should have correct TOTAL_LESSONS count (25)', () => {
+    expect(TOTAL_LESSONS).toBe(25);
   });
 
   it('should have navigation items matching lesson files', () => {

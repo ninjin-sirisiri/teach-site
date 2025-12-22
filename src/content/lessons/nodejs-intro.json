@@ -1,0 +1,42 @@
+{
+  "id": "nodejs-intro",
+  "category": "nodejs",
+  "title": "Node.jsとは",
+  "description": "Node.jsの概要、特徴、インストール方法を学び、サーバーサイドJavaScriptの世界を理解しましょう",
+  "content": "<div class=\"content-section\"><h2 class=\"section-title\">Node.jsとは何か？</h2><p class=\"content-text\"><strong>Node.js</strong>は、JavaScriptをブラウザの外で実行できるようにする<strong>JavaScript実行環境（ランタイム）</strong>です。GoogleのV8 JavaScriptエンジンをベースに構築されており、サーバーサイドアプリケーションやコマンドラインツールの開発に使用されます。</p><div class=\"info-box\"><span class=\"info-box-icon\">💡</span><div class=\"info-box-content\"><div class=\"info-box-title\">ポイント</div><div class=\"info-box-text\">Node.jsは「プログラミング言語」ではなく「実行環境」です。言語としてはJavaScriptを使用します。</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">Node.jsの歴史</h2><div class=\"table-wrapper\"><table><thead><tr><th>年</th><th>出来事</th></tr></thead><tbody><tr><td>2009</td><td>Ryan DahlがNode.jsを発表</td></tr><tr><td>2010</td><td>npm（Node Package Manager）が登場</td></tr><tr><td>2015</td><td>Node.js FoundationとIO.jsが統合</td></tr><tr><td>2019</td><td>OpenJS Foundationに移行</td></tr><tr><td>現在</td><td>LTS版と最新版が定期的にリリース</td></tr></tbody></table></div><p class=\"content-text\">Node.jsの登場により、フロントエンドとバックエンドを同じ言語（JavaScript）で開発できるようになり、Web開発の効率が大幅に向上しました。</p></div><div class=\"content-section\"><h2 class=\"section-title\">Node.jsの特徴</h2><ul><li><strong>非同期・イベント駆動</strong><br>I/O処理をブロックせず、効率的に多数のリクエストを処理できる</li><li><strong>シングルスレッド</strong><br>イベントループを使用して並行処理を実現</li><li><strong>クロスプラットフォーム</strong><br>Windows、macOS、Linuxで動作</li><li><strong>豊富なエコシステム</strong><br>npmを通じて100万以上のパッケージが利用可能</li></ul></div><div class=\"content-section\"><h2 class=\"section-title\">ブラウザJavaScriptとの違い</h2><p class=\"content-text\">同じJavaScriptでも、実行環境によって使えるAPIが異なります。</p><div class=\"table-wrapper\"><table><thead><tr><th>機能</th><th>ブラウザ</th><th>Node.js</th></tr></thead><tbody><tr><td>DOM操作</td><td>✅ 可能</td><td>❌ 不可</td></tr><tr><td>ファイル操作</td><td>❌ 不可</td><td>✅ 可能（fsモジュール）</td></tr><tr><td>ネットワーク通信</td><td>✅ fetch, XMLHttpRequest</td><td>✅ http, https モジュール</td></tr><tr><td>window/document</td><td>✅ 利用可能</td><td>❌ 存在しない</td></tr><tr><td>process/require</td><td>❌ 存在しない</td><td>✅ 利用可能</td></tr></tbody></table></div><div class=\"info-box\"><span class=\"info-box-icon\">⚠️</span><div class=\"info-box-content\"><div class=\"info-box-title\">注意</div><div class=\"info-box-text\">ブラウザで動くJavaScriptコードがそのままNode.jsで動くとは限りません。DOM操作やブラウザ固有のAPIを使用している場合は動作しません。</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">Node.jsのインストール方法</h2><p class=\"content-text\">Node.jsをインストールする方法は主に2つあります。</p><h3>方法1: 公式サイトからダウンロード</h3><p class=\"content-text\"><a href=\"https://nodejs.org/\" target=\"_blank\">nodejs.org</a>から、お使いのOSに合ったインストーラーをダウンロードして実行します。</p><div class=\"info-box\"><span class=\"info-box-icon\">💡</span><div class=\"info-box-content\"><div class=\"info-box-title\">LTS版を選ぼう</div><div class=\"info-box-text\">「LTS（Long Term Support）」版は長期サポートされる安定版です。特別な理由がなければLTS版を選びましょう。</div></div></div><h3>方法2: バージョン管理ツール（nvm）を使用</h3><p class=\"content-text\">複数のNode.jsバージョンを切り替えたい場合は、<strong>nvm（Node Version Manager）</strong>が便利です。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Terminal</span></div><div class=\"code-content\"><pre><code># nvmのインストール（macOS/Linux）\ncurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash\n\n# Node.jsのインストール\nnvm install --lts\n\n# バージョンの確認\nnode --version\nnpm --version</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">最初のNode.jsプログラム</h2><p class=\"content-text\">Node.jsがインストールできたら、簡単なプログラムを実行してみましょう。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript</span></div><div class=\"code-content\"><pre><code>// hello.js\nconsole.log('Hello, Node.js!');\n\n// 現在の日時を表示\nconst now = new Date();\nconsole.log('現在時刻:', now.toLocaleString('ja-JP'));\n\n// Node.jsのバージョンを表示\nconsole.log('Node.js version:', process.version);</code></pre></div></div><p class=\"content-text\">ターミナルで以下のコマンドを実行します：</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Terminal</span></div><div class=\"code-content\"><pre><code>node hello.js</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">Node.jsの用途</h2><p class=\"content-text\">Node.jsは様々な場面で活用されています：</p><ul><li><strong>Webサーバー/APIサーバー</strong> - Express.js、Fastifyなどのフレームワークを使用</li><li><strong>コマンドラインツール</strong> - npm、webpack、ESLintなど多くのツールがNode.js製</li><li><strong>ビルドツール</strong> - フロントエンド開発のビルドプロセス</li><li><strong>デスクトップアプリ</strong> - Electron（VS Code、Slackなど）</li><li><strong>IoT</strong> - 組み込みデバイスの制御</li></ul><div class=\"info-box\"><span class=\"info-box-icon\">📦</span><div class=\"info-box-content\"><div class=\"info-box-title\">次のステップ</div><div class=\"info-box-text\">Node.jsの基本を理解したら、次は「npm基礎」でパッケージ管理について学びましょう。</div></div></div></div>",
+  "exercises": [
+    {
+      "question": "Node.jsとは何ですか？",
+      "options": [
+        "新しいプログラミング言語",
+        "JavaScriptをブラウザ外で実行するための実行環境",
+        "Webブラウザの一種",
+        "HTMLを生成するテンプレートエンジン"
+      ],
+      "answer": 1,
+      "explanation": "Node.jsはJavaScriptの実行環境（ランタイム）であり、ブラウザの外でJavaScriptを実行できるようにします。"
+    },
+    {
+      "question": "Node.jsとブラウザJavaScriptの違いとして正しいものはどれですか？",
+      "options": [
+        "Node.jsではDOMを操作できる",
+        "ブラウザJavaScriptではファイルシステムにアクセスできる",
+        "Node.jsではファイルの読み書きができる",
+        "両者に違いはない"
+      ],
+      "answer": 2,
+      "explanation": "Node.jsではfsモジュールを使ってファイルの読み書きができますが、ブラウザJavaScriptではセキュリティ上の理由からファイルシステムへの直接アクセスはできません。"
+    },
+    {
+      "question": "Node.jsの主な用途として適切でないものはどれですか？",
+      "options": [
+        "Webサーバーの構築",
+        "コマンドラインツールの開発",
+        "ブラウザのDOM操作",
+        "APIサーバーの開発"
+      ],
+      "answer": 2,
+      "explanation": "DOM操作はブラウザ環境でのみ可能です。Node.jsにはDOMが存在しないため、DOM操作はできません。"
+    }
+  ]
+}

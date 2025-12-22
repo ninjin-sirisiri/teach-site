@@ -12,7 +12,7 @@ import * as fc from 'fast-check';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const EXPECTED_LESSON_COUNT = 23;
+const EXPECTED_LESSON_COUNT = 25;
 const LESSONS_DIR = path.join(process.cwd(), 'src/content/lessons');
 
 /**
@@ -107,7 +107,7 @@ describe('Property 1: Lesson Count Preservation', () => {
    * For any lesson, its category should be one of the valid categories.
    */
   it('should have valid categories for all lessons', () => {
-    const validCategories = ['intro', 'html', 'css', 'js', 'ts', 'git', 'react', 'tailwind'];
+    const validCategories = ['intro', 'html', 'css', 'js', 'ts', 'git', 'react', 'tailwind', 'nodejs'];
     const lessonFiles = getLessonFiles();
     
     fc.assert(

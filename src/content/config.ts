@@ -18,6 +18,7 @@ const lessonCategoryEnum = z.enum([
   'git',
   'react',
   'tailwind',
+  'nodejs',
 ]);
 
 /**
