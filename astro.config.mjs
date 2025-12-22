@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   // GitHub Pages のリポジトリ名に合わせて base を設定
-  site: 'https://your-username.github.io',
+  site: 'https://ninjin-sirisiri.github.io',
   base: '/teach-site/',
   
   // 出力ディレクトリをdistに設定
