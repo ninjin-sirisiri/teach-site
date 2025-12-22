@@ -21,39 +21,86 @@ export const tailwindBasics = {
 
     <div class="content-section">
       <h2 class="section-title">セットアップ</h2>
+      <p class="content-text">Tailwind CSSを導入する方法は主に2つあります。</p>
+      
+      <h3 style="font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 1rem; color: var(--text-primary);">方法1: CDN（お試し・学習用）</h3>
+      <p class="content-text">HTMLファイルに1行追加するだけで使えます。本番環境には非推奨ですが、学習やプロトタイプには最適です。</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">HTML</span>
+          <button class="code-copy" onclick="copyCode(this)">コピー</button>
+        </div>
+        <div class="code-content">
+<pre><code><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"https://cdn.tailwindcss.com"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 1rem; color: var(--text-primary);">方法2: npm + Tailwind CLI（本番環境向け）</h3>
+      <p class="content-text">本番環境では、ビルドプロセスを通じて最適化されたCSSを生成します。</p>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang">Terminal</span>
           <button class="code-copy" onclick="copyCode(this)">コピー</button>
         </div>
         <div class="code-content">
-<pre><code><span class="comment"># Viteプロジェクトにインストール</span>
-npm install tailwindcss @tailwindcss/vite</code></pre>
-        </div>
-      </div>
-      <div class="code-block">
-        <div class="code-header">
-          <span class="code-lang">vite.config.js</span>
-          <button class="code-copy" onclick="copyCode(this)">コピー</button>
-        </div>
-        <div class="code-content">
-<pre><code><span class="keyword">import</span> { defineConfig } from <span class="string">'vite'</span>
-<span class="keyword">import</span> tailwindcss from <span class="string">'@tailwindcss/vite'</span>
+<pre><code><span class="comment"># プロジェクトにインストール</span>
+npm install -D tailwindcss
 
-<span class="keyword">export default</span> defineConfig({
-  plugins: [
-    tailwindcss(),
-  ],
-})</code></pre>
+<span class="comment"># 設定ファイルを生成</span>
+npx tailwindcss init</code></pre>
         </div>
       </div>
       <div class="code-block">
         <div class="code-header">
-          <span class="code-lang">src/index.css</span>
+          <span class="code-lang">tailwind.config.js</span>
           <button class="code-copy" onclick="copyCode(this)">コピー</button>
         </div>
         <div class="code-content">
-<pre><code><span class="keyword">@import</span> <span class="string">"tailwindcss"</span>;</code></pre>
+<pre><code><span class="comment">/** @type {import('tailwindcss').Config} */</span>
+<span class="keyword">export default</span> {
+  content: [
+    <span class="string">"./index.html"</span>,
+    <span class="string">"./src/**/*.{html,js}"</span>,
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}</code></pre>
+        </div>
+      </div>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">src/input.css</span>
+          <button class="code-copy" onclick="copyCode(this)">コピー</button>
+        </div>
+        <div class="code-content">
+<pre><code><span class="keyword">@tailwind</span> base;
+<span class="keyword">@tailwind</span> components;
+<span class="keyword">@tailwind</span> utilities;</code></pre>
+        </div>
+      </div>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Terminal</span>
+          <button class="code-copy" onclick="copyCode(this)">コピー</button>
+        </div>
+        <div class="code-content">
+<pre><code><span class="comment"># CSSをビルド（開発時は --watch を付けて自動更新）</span>
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch</code></pre>
+        </div>
+      </div>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">HTML</span>
+          <button class="code-copy" onclick="copyCode(this)">コピー</button>
+        </div>
+        <div class="code-content">
+<pre><code><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">href</span>=<span class="string">"./dist/output.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span></code></pre>
         </div>
       </div>
     </div>
