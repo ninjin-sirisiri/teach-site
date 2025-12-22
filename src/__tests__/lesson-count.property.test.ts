@@ -12,7 +12,7 @@ import * as fc from 'fast-check';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const EXPECTED_LESSON_COUNT = 25;
+const EXPECTED_LESSON_COUNT = 26;
 const LESSONS_DIR = path.join(process.cwd(), 'src/content/lessons');
 
 /**
