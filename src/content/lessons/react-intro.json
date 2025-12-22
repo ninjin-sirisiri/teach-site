@@ -1,0 +1,53 @@
+{
+  "id": "react-intro",
+  "category": "react",
+  "title": "Reactとは",
+  "description": "Reactの基本概念、仮想DOM、コンポーネントベースアーキテクチャを理解し、開発環境をセットアップしましょう",
+  "content": "<div class=\"content-section\"><h2 class=\"section-title\">Reactとは何か？</h2><p class=\"content-text\"><strong>React</strong>は、Meta（旧Facebook）が開発した<strong>UIライブラリ</strong>です。2013年にオープンソースとして公開され、現在では世界で最も人気のあるフロントエンドライブラリの一つとなっています。</p><p class=\"content-text\">Reactを使うと、複雑なユーザーインターフェースを<strong>コンポーネント</strong>という小さな部品に分割して構築できます。これにより、コードの再利用性が高まり、大規模なアプリケーションでも管理しやすくなります。</p><div class=\"info-box\"><span class=\"info-box-icon\">⚛️</span><div class=\"info-box-content\"><div class=\"info-box-title\">Reactの特徴</div><div class=\"info-box-text\">宣言的UI、コンポーネントベース、仮想DOM、単方向データフロー、豊富なエコシステム</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">なぜReactを使うのか？</h2><p class=\"content-text\">従来のJavaScriptでは、DOMを直接操作してUIを更新していました。しかし、アプリケーションが複雑になると、どの部分がいつ更新されるかを追跡するのが困難になります。</p><p class=\"content-text\">Reactは以下の問題を解決します：</p><ul><li><strong>複雑なUI管理</strong> - コンポーネントに分割することで、各部品を独立して開発・テストできる</li><li><strong>効率的な更新</strong> - 仮想DOMにより、必要な部分だけを効率的に更新</li><li><strong>予測可能な状態管理</strong> - 単方向データフローで、データの流れが明確</li><li><strong>再利用性</strong> - 一度作ったコンポーネントを様々な場所で再利用可能</li></ul></div><div class=\"content-section\"><h2 class=\"section-title\">仮想DOM（Virtual DOM）</h2><p class=\"content-text\"><strong>仮想DOM</strong>は、Reactの核となる概念です。実際のDOMの軽量なコピーをメモリ上に保持し、変更があった場合に効率的に実際のDOMを更新します。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">概念図</span></div><div class=\"code-content\"><pre><code>┌─────────────────────────────────────────────────┐\n│  1. 状態が変更される                              │\n│     ↓                                           │\n│  2. 新しい仮想DOMツリーを作成                     │\n│     ↓                                           │\n│  3. 前の仮想DOMと比較（差分検出 = Diffing）        │\n│     ↓                                           │\n│  4. 変更があった部分だけ実際のDOMを更新            │\n│     （Reconciliation = 調停）                    │\n└─────────────────────────────────────────────────┘</code></pre></div></div><p class=\"content-text\">この仕組みにより、開発者は「UIがどうあるべきか」を宣言するだけで、Reactが効率的にDOMを更新してくれます。</p><div class=\"info-box\"><span class=\"info-box-icon\">💡</span><div class=\"info-box-content\"><div class=\"info-box-title\">ポイント</div><div class=\"info-box-text\">仮想DOMのおかげで、開発者はDOM操作を意識せずに、状態の変更だけに集中できます。</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">コンポーネントベースアーキテクチャ</h2><p class=\"content-text\">Reactでは、UIを<strong>コンポーネント</strong>という独立した部品に分割します。各コンポーネントは、自身の見た目（JSX）とロジック（JavaScript）を持ちます。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">概念図</span></div><div class=\"code-content\"><pre><code>        ┌─────────────────────────────┐\n        │           App               │\n        └─────────────────────────────┘\n                     │\n        ┌────────────┼────────────┐\n        ↓            ↓            ↓\n   ┌─────────┐  ┌─────────┐  ┌─────────┐\n   │ Header  │  │  Main   │  │ Footer  │\n   └─────────┘  └─────────┘  └─────────┘\n                     │\n              ┌──────┼──────┐\n              ↓      ↓      ↓\n          ┌──────┐┌──────┐┌──────┐\n          │Card  ││Card  ││Card  │\n          └──────┘└──────┘└──────┘</code></pre></div></div><p class=\"content-text\">コンポーネントベースの利点：</p><ul><li><strong>再利用性</strong> - 同じコンポーネントを複数の場所で使える</li><li><strong>保守性</strong> - 各コンポーネントが独立しているため、変更の影響範囲が限定される</li><li><strong>テスト容易性</strong> - 個々のコンポーネントを単独でテストできる</li><li><strong>チーム開発</strong> - 異なるメンバーが異なるコンポーネントを並行して開発できる</li></ul></div><div class=\"content-section\"><h2 class=\"section-title\">Viteを使ったプロジェクト作成</h2><p class=\"content-text\"><strong>Vite</strong>（ヴィート）は、高速な開発サーバーとビルドツールを提供するモダンなツールです。Reactプロジェクトを素早く始めることができます。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Terminal</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code># Vite + Reactプロジェクトを作成\nnpm create vite@latest my-react-app -- --template react\n\n# プロジェクトディレクトリに移動\ncd my-react-app\n\n# 依存関係をインストール\nnpm install\n\n# 開発サーバーを起動\nnpm run dev</code></pre></div></div><p class=\"content-text\">TypeScriptを使いたい場合は、テンプレートを<code>react-ts</code>に変更します：</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Terminal</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code># TypeScript版\nnpm create vite@latest my-react-app -- --template react-ts</code></pre></div></div><div class=\"info-box\"><span class=\"info-box-icon\">⚡</span><div class=\"info-box-content\"><div class=\"info-box-title\">Viteの特徴</div><div class=\"info-box-text\">ESモジュールを活用した高速な開発サーバー、ホットモジュールリプレースメント（HMR）、最適化されたプロダクションビルド</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">プロジェクト構造</h2><p class=\"content-text\">Viteで作成したReactプロジェクトの基本構造：</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">ファイル構成</span></div><div class=\"code-content\"><pre><code>my-react-app/\n├── node_modules/      # 依存パッケージ\n├── public/            # 静的ファイル（favicon等）\n├── src/               # ソースコード\n│   ├── App.jsx        # メインコンポーネント\n│   ├── App.css        # Appのスタイル\n│   ├── main.jsx       # エントリーポイント\n│   └── index.css      # グローバルスタイル\n├── index.html         # HTMLテンプレート\n├── package.json       # プロジェクト設定\n└── vite.config.js     # Vite設定</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">最初のReactコード</h2><p class=\"content-text\">Viteで生成される<code>src/App.jsx</code>を見てみましょう：</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JSX</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>import { useState } from 'react'\nimport './App.css'\n\nfunction App() {\n  const [count, setCount] = useState(0)\n\n  return (\n    &lt;div className=\"App\"&gt;\n      &lt;h1&gt;Vite + React&lt;/h1&gt;\n      &lt;div className=\"card\"&gt;\n        &lt;button onClick={() => setCount(count + 1)}&gt;\n          count is {count}\n        &lt;/button&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  )\n}\n\nexport default App</code></pre></div></div><p class=\"content-text\">このコードには、Reactの重要な概念が含まれています：</p><ul><li><strong>import文</strong> - Reactの機能やスタイルを読み込む</li><li><strong>関数コンポーネント</strong> - <code>function App()</code>でUIを定義</li><li><strong>useState</strong> - 状態（count）を管理するHook</li><li><strong>JSX</strong> - HTMLライクな構文でUIを記述</li><li><strong>イベントハンドラ</strong> - <code>onClick</code>でクリック時の処理を定義</li></ul></div><div class=\"content-section\"><h2 class=\"section-title\">Reactの歴史</h2><div class=\"table-wrapper\"><table><thead><tr><th>年</th><th>出来事</th></tr></thead><tbody><tr><td>2011</td><td>Facebook社内でReactの開発開始</td></tr><tr><td>2013</td><td>オープンソースとして公開</td></tr><tr><td>2015</td><td>React Native発表（モバイルアプリ開発）</td></tr><tr><td>2016</td><td>React 15 - パフォーマンス改善</td></tr><tr><td>2017</td><td>React 16 - Fiber（新しいレンダリングエンジン）</td></tr><tr><td>2019</td><td><strong>React 16.8 - Hooks導入</strong>（大きな転換点）</td></tr><tr><td>2022</td><td>React 18 - Concurrent Features</td></tr></tbody></table></div><p class=\"content-text\">2019年のHooks導入により、クラスコンポーネントから関数コンポーネントへの移行が進み、よりシンプルなコードが書けるようになりました。</p></div><div class=\"content-section\"><h2 class=\"section-title\">まとめ</h2><p class=\"content-text\">この章で学んだこと：</p><ul><li><strong>React</strong>はMeta社が開発したUIライブラリ</li><li><strong>仮想DOM</strong>により効率的なUI更新を実現</li><li><strong>コンポーネントベース</strong>で再利用可能なUI部品を構築</li><li><strong>Vite</strong>を使って素早くプロジェクトを開始できる</li></ul><p class=\"content-text\">次のレッスンでは、ReactのUI記述に使う<strong>JSX構文</strong>について詳しく学びます。</p></div>",
+  "exercises": [
+    {
+      "question": "Reactの「仮想DOM」の主な役割は何ですか？",
+      "options": [
+        "サーバーサイドでHTMLを生成する",
+        "実際のDOMの変更を効率的に行うため、メモリ上でDOMの差分を計算する",
+        "CSSスタイルを動的に生成する",
+        "JavaScriptのコードを圧縮する"
+      ],
+      "answer": 1,
+      "explanation": "仮想DOMは、実際のDOMの軽量なコピーをメモリ上に保持し、変更前後の差分を計算して、必要な部分だけを効率的に更新します。"
+    },
+    {
+      "question": "Reactの「コンポーネントベースアーキテクチャ」の利点として正しくないものはどれですか？",
+      "options": [
+        "UIを再利用可能な部品に分割できる",
+        "各コンポーネントを独立してテストできる",
+        "すべてのコンポーネントが自動的にグローバル状態を共有する",
+        "チームメンバーが並行して異なるコンポーネントを開発できる"
+      ],
+      "answer": 2,
+      "explanation": "Reactのコンポーネントはデフォルトでは独立しており、グローバル状態を自動的に共有しません。状態の共有には、propsやContext APIなどを明示的に使用する必要があります。"
+    },
+    {
+      "question": "Viteを使ってReact + TypeScriptプロジェクトを作成するコマンドはどれですか？",
+      "options": [
+        "npm create vite@latest my-app -- --template react",
+        "npm create vite@latest my-app -- --template react-ts",
+        "npx create-react-app my-app --typescript",
+        "npm init react-app my-app"
+      ],
+      "answer": 1,
+      "explanation": "Viteでは --template react-ts オプションを使用することで、TypeScript対応のReactプロジェクトを作成できます。"
+    },
+    {
+      "question": "Reactが2019年に導入した、関数コンポーネントで状態管理を可能にした機能は何ですか？",
+      "options": [
+        "Redux",
+        "Context API",
+        "Hooks",
+        "Fiber"
+      ],
+      "answer": 2,
+      "explanation": "React 16.8で導入されたHooksにより、関数コンポーネントでもuseStateやuseEffectなどを使って状態管理や副作用の処理ができるようになりました。"
+    }
+  ]
+}

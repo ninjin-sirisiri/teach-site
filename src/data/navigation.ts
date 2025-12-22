@@ -1,14 +1,14 @@
 /**
  * ナビゲーション設定
  * サイドバーに表示するレッスンのナビゲーション構造を定義
- * Requirements: 3.5
+ * Requirements: 3.5, 10.1, 10.2, 10.3
  */
 
 import type { NavSection } from '../types/navigation';
 
 /**
  * ナビゲーションセクションの定義
- * 16レッスンを7つのセクションに分類
+ * 23レッスンを8つのセクションに分類
  */
 export const navSections: NavSection[] = [
   {
@@ -56,9 +56,21 @@ export const navSections: NavSection[] = [
     ],
   },
   {
-    title: 'フレームワーク',
+    title: 'React',
     items: [
-      { id: 'react-basics', icon: '⚛️', label: 'React入門', badge: 'react' },
+      { id: 'react-intro', icon: '📖', label: 'Reactとは', badge: 'react' },
+      { id: 'react-jsx', icon: '✨', label: 'JSX構文', badge: 'react' },
+      { id: 'react-components', icon: '🧩', label: 'コンポーネント', badge: 'react' },
+      { id: 'react-state', icon: '📊', label: '状態管理', badge: 'react' },
+      { id: 'react-effects', icon: '🔄', label: '副作用', badge: 'react' },
+      { id: 'react-events', icon: '🖱️', label: 'イベント処理', badge: 'react' },
+      { id: 'react-hooks', icon: '🪝', label: 'Hooks応用', badge: 'react' },
+      { id: 'react-patterns', icon: '🏗️', label: '実践パターン', badge: 'react' },
+    ],
+  },
+  {
+    title: 'その他',
+    items: [
       { id: 'tailwind-basics', icon: '🌊', label: 'Tailwind CSS', badge: 'tailwind' },
     ],
   },
@@ -87,5 +99,6 @@ export function getNavItemById(id: string) {
 
 /**
  * 全レッスン数を取得
+ * 23レッスン: 入門(2) + HTML(2) + CSS(2) + JavaScript(3) + TypeScript(2) + ツール(3) + React(8) + その他(1)
  */
-export const TOTAL_LESSONS = 16;
+export const TOTAL_LESSONS = 23;

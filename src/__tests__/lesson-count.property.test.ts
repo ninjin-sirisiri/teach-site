@@ -5,14 +5,14 @@
  * **Validates: Requirements 2.1**
  * 
  * *For any* migration, the total number of lessons in the Content Collection 
- * SHALL equal 16, matching the original lesson count.
+ * SHALL equal 23, matching the current lesson count including React lessons.
  */
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const EXPECTED_LESSON_COUNT = 16;
+const EXPECTED_LESSON_COUNT = 23;
 const LESSONS_DIR = path.join(process.cwd(), 'src/content/lessons');
 
 /**
@@ -36,11 +36,11 @@ describe('Property 1: Lesson Count Preservation', () => {
   /**
    * Property Test: The total number of lessons equals 16
    * 
-   * This property verifies that the migration preserved all 16 original lessons.
+   * This property verifies that the migration preserved all 23 lessons.
    * We use property-based testing to verify this invariant holds regardless of
    * which subset of lessons we examine.
    */
-  it('should have exactly 16 lessons in the Content Collection', () => {
+  it('should have exactly 23 lessons in the Content Collection', () => {
     const lessonFiles = getLessonFiles();
     expect(lessonFiles.length).toBe(EXPECTED_LESSON_COUNT);
   });
