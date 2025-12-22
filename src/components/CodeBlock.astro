@@ -1,0 +1,61 @@
+---
+/**
+ * CodeBlock Component
+ * Displays code with syntax highlighting and a copy button
+ * Requirements: 4.4
+ */
+
+interface Props {
+  lang: string;
+  code: string;
+  showCopy?: boolean;
+}
+
+const { lang, code, showCopy = true } = Astro.props;
+
+// Generate a unique ID for this code block
+const codeId = `code-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-lang">{lang}</span>
+    {showCopy && (
+      <button 
+        class="code-copy" 
+        data-code-id={codeId}
+        aria-label="コードをコピー"
+      >
+        📋 Copy
+      </button>
+    )}
+  </div>
+  <div class="code-content">
+    <pre id={codeId}><code set:html={code} /></pre>
+  </div>
+</div>
+
+<script>
+  // Copy button functionality
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains('code-copy')) {
+      const codeId = target.getAttribute('data-code-id');
+      if (codeId) {
+        const codeElement = document.getElementById(codeId);
+        if (codeElement) {
+          const text = codeElement.textContent || '';
+          navigator.clipboard.writeText(text).then(() => {
+            const originalText = target.textContent;
+            target.textContent = '✓ Copied!';
+            setTimeout(() => {
+              target.textContent = originalText;
+            }, 2000);
+          }).catch((err) => {
+            console.error('Failed to copy:', err);
+          });
+        }
+      }
+    }
+  });
+</script>

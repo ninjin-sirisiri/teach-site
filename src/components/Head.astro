@@ -1,0 +1,92 @@
+---
+/**
+ * Headコンポーネント
+ * SEOメタタグ、OGP、Twitter Card、JSON-LDを実装
+ * Requirements: 7.1, 7.2, 7.3, 7.4, 7.5
+ */
+
+interface Props {
+  /** ページタイトル */
+  title: string;
+  /** ページの説明文 */
+  description: string;
+  /** OGP画像のURL（オプション） */
+  image?: string;
+  /** ページのURL（オプション） */
+  url?: string;
+  /** ページタイプ（オプション） */
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  image = '/teach-site/card.png',
+  url = Astro.url.href,
+  type = 'website',
+} = Astro.props;
+
+const siteName = 'Web Dev Learn';
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+
+// JSON-LD構造化データ
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': type === 'article' ? 'Article' : 'WebSite',
+  name: fullTitle,
+  description: description,
+  url: url,
+  image: image,
+  publisher: {
+    '@type': 'Organization',
+    name: siteName,
+  },
+};
+---
+
+<head>
+  <!-- 基本メタタグ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content={siteName} />
+  
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="5rzbdcQsvtukQHgJ8xmgbxVwHZsE0qnmVI1SGe_tD_A" />
+  
+  <!-- タイトル -->
+  <title>{fullTitle}</title>
+  
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" href="/teach-site/favicon.png" />
+  <link rel="apple-touch-icon" href="/teach-site/favicon.png" />
+  
+  <!-- マニフェスト -->
+  <link rel="manifest" href="/teach-site/manifest.json" />
+  
+  <!-- OGP (Open Graph Protocol) -->
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:url" content={url} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="ja_JP" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+  
+  <!-- JSON-LD構造化データ -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</head>

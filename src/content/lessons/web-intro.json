@@ -1,0 +1,31 @@
+{
+  "id": "web-intro",
+  "category": "intro",
+  "title": "Web開発入門",
+  "description": "Webの仕組みと開発に必要な技術の全体像を理解しましょう",
+  "content": "\n    <div class=\"content-section\">\n      <h2 class=\"section-title\">Webサイトはどう動いているの？</h2>\n      <p class=\"content-text\">\n        私たちが普段使っているWebサイトは、<strong>クライアント（ブラウザ）</strong>と<strong>サーバー</strong>の間でデータをやり取りすることで動いています。\n      </p>\n      <div class=\"info-box\">\n        <span class=\"info-box-icon\">🌐</span>\n        <div class=\"info-box-content\">\n          <div class=\"info-box-title\">Webの基本的な流れ</div>\n          <div class=\"info-box-text\">\n            1. ユーザーがブラウザでURLを入力<br>\n            2. ブラウザがサーバーにリクエストを送信<br>\n            3. サーバーがHTML/CSS/JSなどのファイルを返す<br>\n            4. ブラウザがファイルを解析してページを表示\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"content-section\">\n      <h2 class=\"section-title\">フロントエンドとバックエンド</h2>\n      <p class=\"content-text\">\n        Web開発は大きく<strong>フロントエンド</strong>と<strong>バックエンド</strong>の2つに分けられます。\n      </p>\n      <div class=\"table-wrapper\">\n        <table>\n          <thead>\n            <tr><th>領域</th><th>役割</th><th>使用技術</th></tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td><strong>フロントエンド</strong></td>\n              <td>ユーザーが直接見て操作する部分</td>\n              <td>HTML, CSS, JavaScript</td>\n            </tr>\n            <tr>\n              <td><strong>バックエンド</strong></td>\n              <td>データ処理やサーバー側の処理</td>\n              <td>Node.js, Python, PHP, データベースなど</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <p class=\"content-text\">\n        このサイトでは<strong>フロントエンド</strong>の技術を中心に学びます。\n        フロントエンドだけでも、見た目が美しく、動きのあるWebサイトを作ることができます。\n      </p>\n    </div>\n\n    <div class=\"content-section\">\n      <h2 class=\"section-title\">Web開発の3つの柱</h2>\n      <p class=\"content-text\">\n        Webページは主に3つの技術で構成されています。それぞれが異なる役割を持っています。\n      </p>\n      <div class=\"table-wrapper\">\n        <table>\n          <thead>\n            <tr><th>技術</th><th>役割</th><th>例え</th></tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td><strong>HTML</strong></td>\n              <td>構造・骨格</td>\n              <td>家でいう骨組み、柱</td>\n            </tr>\n            <tr>\n              <td><strong>CSS</strong></td>\n              <td>見た目・装飾</td>\n              <td>家でいう外壁、内装</td>\n            </tr>\n            <tr>\n              <td><strong>JavaScript</strong></td>\n              <td>動き・機能</td>\n              <td>家でいう電気、水道</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"info-box\">\n        <span class=\"info-box-icon\">💡</span>\n        <div class=\"info-box-content\">\n          <div class=\"info-box-title\">ポイント</div>\n          <div class=\"info-box-text\">HTMLだけでもWebページは作れますが、CSSがないと見た目が質素で、JavaScriptがないと動きがありません。3つを組み合わせることで、魅力的なWebサイトが完成します。</div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"content-section\">\n      <h2 class=\"section-title\">開発に必要なツール</h2>\n      <p class=\"content-text\">Web開発を始めるには、以下のツールを準備しましょう。</p>\n      <ul>\n        <li><strong>テキストエディタ</strong> - コードを書くためのツール（VS Code推奨）</li>\n        <li><strong>Webブラウザ</strong> - 作ったサイトを確認（Chrome、Firefox推奨）</li>\n        <li><strong>開発者ツール</strong> - ブラウザに内蔵（F12キーで開く）</li>\n      </ul>\n      <div class=\"info-box\">\n        <span class=\"info-box-icon\">🛠️</span>\n        <div class=\"info-box-content\">\n          <div class=\"info-box-title\">VS Codeのおすすめ拡張機能</div>\n          <div class=\"info-box-text\">\n            • Live Server - 変更を自動で反映<br>\n            • Prettier - コードを自動整形<br>\n            • Auto Rename Tag - HTMLタグを自動で閉じる\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"content-section\">\n      <h2 class=\"section-title\">学習の進め方</h2>\n      <p class=\"content-text\">このサイトでは、以下の順番で学習することをおすすめします。</p>\n      <ol>\n        <li><strong>HTMLを学ぶ</strong> - Webページの構造を理解</li>\n        <li><strong>CSSを学ぶ</strong> - 見た目を装飾する方法を習得</li>\n        <li><strong>JavaScriptを学ぶ</strong> - 動的な機能を実装</li>\n        <li><strong>React</strong> - 効率的なUI構築（オプション）</li>\n        <li><strong>Tailwind CSS</strong> - 高速なスタイリング（オプション）</li>\n      </ol>\n      <p class=\"content-text\">\n        各レッスンにはコード例が含まれています。<strong>実際に手を動かして書いてみる</strong>ことで、理解が深まります。\n      </p>\n    </div>\n\n    <div class=\"content-section\">\n      <h2 class=\"section-title\">モダンWeb開発とは？</h2>\n      <p class=\"content-text\">\n        現在のWeb開発では、HTML/CSS/JavaScriptに加えて、様々な<strong>フレームワーク</strong>や<strong>ツール</strong>が使われています。\n      </p>\n      <ul>\n        <li><strong>React, Vue, Angular</strong> - UIを効率的に構築するJavaScriptライブラリ/フレームワーク</li>\n        <li><strong>Tailwind CSS, Bootstrap</strong> - CSSを効率的に書くためのフレームワーク</li>\n        <li><strong>npm, Vite</strong> - パッケージ管理と開発環境のツール</li>\n        <li><strong>Git, GitHub</strong> - コードのバージョン管理と共有</li>\n      </ul>\n      <p class=\"content-text\">\n        これらは基礎を理解してから学ぶことで、より効果的に活用できます。\n        まずはHTML, CSS, JavaScriptの基礎をしっかり身につけましょう！\n      </p>\n    </div>\n  ",
+  "exercises": [
+    {
+      "question": "ユーザーが直接見て操作するWebサイトの部分を何と呼びますか？",
+      "options": [
+        "バックエンド",
+        "フロントエンド",
+        "データベース",
+        "サーバー"
+      ],
+      "answer": 1,
+      "explanation": "ユーザーが直接目にする部分はフロントエンドと呼ばれます。"
+    },
+    {
+      "question": "Webサイトの「骨組み（構造）」を担当する言語はどれですか？",
+      "options": [
+        "JavaScript",
+        "CSS",
+        "HTML",
+        "PHP"
+      ],
+      "answer": 2,
+      "explanation": "HTMLはWebサイトの構造や骨組みを担当します。"
+    }
+  ]
+}

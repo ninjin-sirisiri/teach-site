@@ -1,0 +1,97 @@
+---
+/**
+ * Sidebarコンポーネント
+ * ナビゲーションセクションとリンクを実装
+ * 現在のレッスンのハイライト
+ * Requirements: 4.2
+ */
+
+import { navSections } from '../data/navigation';
+
+interface Props {
+  /** 現在のレッスンID（オプション） */
+  currentLessonId?: string;
+}
+
+const { currentLessonId } = Astro.props;
+const basePath = import.meta.env.BASE_URL || '/teach-site/';
+---
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href={basePath} class="logo">
+      <div class="logo-icon">🚀</div>
+      <span>Web Dev Learn</span>
+    </a>
+  </div>
+  
+  <nav>
+    <!-- ホームリンク -->
+    <div class="nav-section">
+      <div class="nav-list">
+        <div class="nav-item">
+          <a 
+            href={basePath} 
+            class:list={['nav-link', { active: !currentLessonId }]}
+          >
+            <span class="nav-icon">🏠</span>
+            <span>ホーム</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- レッスンセクション -->
+    {navSections.map((section) => (
+      <div class="nav-section">
+        <div class="nav-section-title">{section.title}</div>
+        <div class="nav-list">
+          {section.items.map((item) => (
+            <div class="nav-item">
+              <a 
+                href={`${basePath}lessons/${item.id}/`}
+                class:list={['nav-link', { active: currentLessonId === item.id }]}
+                data-lesson-id={item.id}
+              >
+                <span class="nav-icon">{item.icon}</span>
+                <span>{item.label}</span>
+                <span class="nav-completion" data-completion-for={item.id}></span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </nav>
+</aside>
+
+<script>
+  // 進捗状態をクライアントサイドで更新
+  function updateCompletionMarks() {
+    const STORAGE_KEY = 'webdev-learn-progress';
+    
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (data) {
+        const progress = JSON.parse(data);
+        const completedLessons: string[] = progress.completedLessons || [];
+        
+        // 各レッスンの完了マークを更新
+        document.querySelectorAll('[data-completion-for]').forEach((el) => {
+          const lessonId = el.getAttribute('data-completion-for');
+          if (lessonId && completedLessons.includes(lessonId)) {
+            el.textContent = '✓';
+            el.classList.add('completed');
+          }
+        });
+      }
+    } catch (e) {
+      console.warn('Failed to load progress:', e);
+    }
+  }
+  
+  // ページ読み込み時に実行
+  document.addEventListener('DOMContentLoaded', updateCompletionMarks);
+  // Astroのページ遷移時にも実行
+  document.addEventListener('astro:page-load', updateCompletionMarks);
+</script>

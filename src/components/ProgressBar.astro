@@ -1,0 +1,48 @@
+---
+/**
+ * ProgressBar Component
+ * Displays a visual progress bar with percentage
+ * Requirements: 4.6
+ */
+
+interface Props {
+  title?: string;
+  completedCount?: number;
+  totalCount?: number;
+  percentage?: number;
+  showStats?: boolean;
+}
+
+const { 
+  title = '学習進捗',
+  completedCount = 0, 
+  totalCount = 16, 
+  percentage,
+  showStats = true 
+} = Astro.props;
+
+// Calculate percentage if not provided
+const calculatedPercentage = percentage ?? Math.round((completedCount / totalCount) * 100);
+---
+
+<div class="progress-section">
+  <div class="progress-header">
+    <div class="progress-title">
+      <span>📊</span>
+      <span>{title}</span>
+    </div>
+    {showStats && (
+      <div class="progress-stats">
+        {completedCount} / {totalCount} レッスン完了
+      </div>
+    )}
+  </div>
+  <div class="progress-bar-container">
+    <div 
+      class="progress-bar" 
+      style={`width: ${calculatedPercentage}%`}
+      data-percentage={calculatedPercentage}
+    ></div>
+  </div>
+  <div class="progress-percentage">{calculatedPercentage}%</div>
+</div>

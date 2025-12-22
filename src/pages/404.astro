@@ -1,0 +1,215 @@
+---
+/**
+ * 404エラーページ
+ * 存在しないページへのアクセス時に表示
+ * Requirements: 3.4
+ */
+
+import Layout from '../components/Layout.astro';
+
+const basePath = import.meta.env.BASE_URL || '/teach-site/';
+---
+
+<Layout
+  title="ページが見つかりません - Web Dev Learn"
+  description="お探しのページは見つかりませんでした。"
+>
+  <div class="error-page">
+    <div class="error-content">
+      <div class="error-icon">🔍</div>
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">ページが見つかりません</h2>
+      <p class="error-description">
+        お探しのページは存在しないか、移動した可能性があります。<br />
+        URLをご確認いただくか、ホームページからお探しください。
+      </p>
+      <div class="error-actions">
+        <a href={basePath} class="error-button primary">
+          🏠 ホームに戻る
+        </a>
+        <a href={`${basePath}lessons/web-intro/`} class="error-button secondary">
+          📚 最初のレッスンへ
+        </a>
+      </div>
+    </div>
+    
+    <div class="error-suggestions">
+      <h3 class="suggestions-title">おすすめのレッスン</h3>
+      <div class="suggestions-grid">
+        <a href={`${basePath}lessons/html-intro/`} class="suggestion-card">
+          <span class="suggestion-icon">📖</span>
+          <span class="suggestion-text">HTMLとは</span>
+        </a>
+        <a href={`${basePath}lessons/css-intro/`} class="suggestion-card">
+          <span class="suggestion-icon">🎨</span>
+          <span class="suggestion-text">CSSとは</span>
+        </a>
+        <a href={`${basePath}lessons/js-intro/`} class="suggestion-card">
+          <span class="suggestion-icon">⚡</span>
+          <span class="suggestion-text">JavaScriptとは</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: var(--spacing-xl);
+  }
+
+  .error-content {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .error-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.8;
+  }
+
+  .error-code {
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    margin: 0 0 var(--spacing-sm) 0;
+    letter-spacing: -0.05em;
+  }
+
+  .error-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+  }
+
+  .error-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto var(--spacing-xl) auto;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .error-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .error-button.primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .error-button.primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .error-button.secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  .error-button.secondary:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color-hover);
+  }
+
+  .error-suggestions {
+    width: 100%;
+    max-width: 500px;
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .suggestions-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .suggestion-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .suggestion-card:hover {
+    border-color: var(--color-primary);
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+  }
+
+  .suggestion-icon {
+    font-size: 1.5rem;
+  }
+
+  .suggestion-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .error-code {
+      font-size: 4rem;
+    }
+
+    .error-title {
+      font-size: 1.25rem;
+    }
+
+    .error-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .error-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .suggestions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

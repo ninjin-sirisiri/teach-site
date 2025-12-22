@@ -1,0 +1,65 @@
+---
+/**
+ * Layoutコンポーネント
+ * サイドバーとメインコンテンツエリアのレイアウト
+ * グローバルCSSのインポート
+ * Requirements: 4.1
+ */
+
+import Head from './Head.astro';
+import Sidebar from './Sidebar.astro';
+import '../styles/global.css';
+
+interface Props {
+  /** ページタイトル */
+  title: string;
+  /** ページの説明文 */
+  description: string;
+  /** 現在のレッスンID（オプション） */
+  currentLessonId?: string;
+  /** OGP画像のURL（オプション） */
+  image?: string;
+  /** ページタイプ（オプション） */
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  currentLessonId,
+  image,
+  type = 'website',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <Head
+    title={title}
+    description={description}
+    image={image}
+    type={type}
+  />
+  <body>
+    <!-- モバイルメニュートグルボタン -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+      ☰
+    </button>
+    
+    <div id="app">
+      <!-- サイドバー -->
+      <Sidebar currentLessonId={currentLessonId} />
+      
+      <!-- メインコンテンツ -->
+      <main class="main-content">
+        <slot />
+      </main>
+    </div>
+    
+    <!-- モバイルメニュースクリプト -->
+    <script>
+      import { initMobileMenu } from '../scripts/mobile-menu';
+      initMobileMenu();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "id": "html-basics",
+  "category": "html",
+  "title": "HTML基礎",
+  "description": "HTMLの基本構造からフォーム、セマンティックHTMLまでを学びましょう",
+  "content": "<div class=\"content-section\"><h2 class=\"section-title\">HTMLとは？</h2><p class=\"content-text\"><strong>HTML (HyperText Markup Language)</strong>は、Webページの構造を定義するためのマークアップ言語です。ブラウザはHTMLを読み取り、その構造に従ってコンテンツを表示します。</p><div class=\"info-box\"><span class=\"info-box-icon\">💡</span><div class=\"info-box-content\"><div class=\"info-box-title\">ポイント</div><div class=\"info-box-text\">HTMLは「何を表示するか」を定義し、CSSは「どのように見せるか」を定義します。</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">基本構造</h2><p class=\"content-text\">すべてのHTMLドキュメントは以下の基本構造を持ちます：</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">HTML</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!DOCTYPE html&gt;\n&lt;html lang=\"ja\"&gt;\n  &lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;title&gt;ページタイトル&lt;/title&gt;\n    &lt;link rel=\"stylesheet\" href=\"style.css\"&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;!-- ここにコンテンツを書く --&gt;\n    &lt;script src=\"script.js\"&gt;&lt;/script&gt;\n  &lt;/body&gt;\n&lt;/html&gt;</code></pre></div></div><ul><li><strong>&lt;!DOCTYPE html&gt;</strong> - HTML5であることを宣言</li><li><strong>&lt;html lang=\"ja\"&gt;</strong> - 言語を日本語に設定</li><li><strong>&lt;head&gt;</strong> - メタ情報（タイトル、CSS読み込みなど）</li><li><strong>&lt;body&gt;</strong> - 実際に表示されるコンテンツ</li></ul></div>",
+  "exercises": [
+    {
+      "question": "HTML5であることを宣言するための記述はどれですか？",
+      "options": [
+        "<html>",
+        "<!DOCTYPE html>",
+        "<meta charset=\"UTF-8\">",
+        "<head>"
+      ],
+      "answer": 1,
+      "explanation": "<!DOCTYPE html>は文書がHTML5であることをブラウザに伝えます。"
+    },
+    {
+      "question": "画像を表示するためのタグと、必須の属性の組み合わせはどれですか？",
+      "options": [
+        "<a> と href",
+        "<img> と src",
+        "<div> と class",
+        "<p> と text"
+      ],
+      "answer": 1,
+      "explanation": "画像を表示するには <img> タグを使い、ファイルの場所を指定する src 属性が必要です。"
+    },
+    {
+      "question": "検索エンジンやスクリーンリーダーが理解しやすい「意味のあるタグ」を使うことを何と呼びますか？",
+      "options": [
+        "ダイナミックHTML",
+        "セマンティックHTML",
+        "レスポンシブHTML",
+        "スタティックHTML"
+      ],
+      "answer": 1,
+      "explanation": "セマンティックHTMLは、適切なタグ（header, main, footerなど）を使って文書の意味を正しく伝える手法です。"
+    }
+  ]
+}

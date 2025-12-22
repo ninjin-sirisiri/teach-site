@@ -1,0 +1,117 @@
+---
+/**
+ * Quizコンポーネント
+ * クライアントサイドインタラクションのためのisland
+ * Requirements: 6.1, 6.5
+ */
+
+import type { Exercise } from '../types/lesson';
+
+interface Props {
+  /** 演習問題の配列 */
+  exercises: Exercise[];
+  /** レッスンID */
+  lessonId: string;
+}
+
+const { exercises, lessonId } = Astro.props;
+---
+
+{exercises.length > 0 && (
+  <section class="quiz-section" data-lesson-id={lessonId}>
+    <div class="quiz-header">
+      <span class="quiz-icon">📝</span>
+      <h2 class="quiz-title">演習問題</h2>
+    </div>
+    
+    {exercises.map((exercise, index) => (
+      <div class="quiz-item" data-quiz-index={index}>
+        <p class="quiz-question">
+          Q{index + 1}. {exercise.question}
+        </p>
+        <div class="quiz-options">
+          {exercise.options.map((option, optionIndex) => (
+            <button
+              type="button"
+              class="quiz-option"
+              data-option-index={optionIndex}
+              data-correct-answer={exercise.answer}
+              data-explanation={exercise.explanation}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+        <div class="quiz-feedback" data-feedback-index={index}>
+          <p class="feedback-text"></p>
+        </div>
+      </div>
+    ))}
+  </section>
+)}
+
+<script>
+  import { checkAnswer, type QuizResult } from '../scripts/quiz';
+
+  /**
+   * クイズの初期化
+   * 各選択肢にクリックイベントを設定
+   */
+  function initQuiz(): void {
+    const quizItems = document.querySelectorAll('.quiz-item');
+    
+    quizItems.forEach((item) => {
+      const options = item.querySelectorAll('.quiz-option');
+      const feedbackEl = item.querySelector('.quiz-feedback') as HTMLElement | null;
+      const feedbackText = feedbackEl?.querySelector('.feedback-text') as HTMLElement | null;
+      
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          // 既に回答済みの場合は何もしない
+          if (item.querySelector('.quiz-option.correct, .quiz-option.wrong')) {
+            return;
+          }
+          
+          const selectedIndex = parseInt(option.getAttribute('data-option-index') || '0', 10);
+          const correctAnswer = parseInt(option.getAttribute('data-correct-answer') || '0', 10);
+          const explanation = option.getAttribute('data-explanation') || '';
+          
+          // 回答をチェック
+          const result: QuizResult = checkAnswer(selectedIndex, correctAnswer);
+          
+          // 選択した選択肢にスタイルを適用
+          option.classList.add(result.isCorrect ? 'correct' : 'wrong');
+          
+          // 正解の選択肢をハイライト（不正解の場合）
+          if (!result.isCorrect) {
+            options.forEach((opt) => {
+              const optIndex = parseInt(opt.getAttribute('data-option-index') || '0', 10);
+              if (optIndex === correctAnswer) {
+                opt.classList.add('correct');
+              }
+            });
+          }
+          
+          // フィードバックを表示
+          if (feedbackEl && feedbackText) {
+            feedbackEl.classList.add('show', result.isCorrect ? 'correct' : 'wrong');
+            feedbackText.textContent = result.isCorrect 
+              ? `✅ 正解！ ${explanation}`
+              : `❌ 不正解... ${explanation}`;
+          }
+          
+          // 他の選択肢を無効化
+          options.forEach((opt) => {
+            (opt as HTMLButtonElement).disabled = true;
+          });
+        });
+      });
+    });
+  }
+
+  // DOMContentLoadedで初期化
+  document.addEventListener('DOMContentLoaded', initQuiz);
+  
+  // Astroのページ遷移時にも初期化
+  document.addEventListener('astro:page-load', initQuiz);
+</script>

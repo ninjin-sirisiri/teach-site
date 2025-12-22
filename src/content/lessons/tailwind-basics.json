@@ -1,0 +1,64 @@
+{
+  "id": "tailwind-basics",
+  "category": "tailwind",
+  "title": "Tailwind CSS基礎",
+  "description": "ユーティリティファーストのCSSフレームワーク、Tailwind CSSの基本を学びましょう",
+  "content": "<div class=\"content-section\"><h2 class=\"section-title\">Tailwind CSSとは？</h2><p class=\"content-text\"><strong>Tailwind CSS</strong>は、ユーティリティファーストのCSSフレームワークです。あらかじめ用意された小さなクラス（ユーティリティクラス）を組み合わせて、HTMLに直接スタイルを適用します。</p><div class=\"info-box\"><span class=\"info-box-icon\">💡</span><div class=\"info-box-content\"><div class=\"info-box-title\">ユーティリティファーストとは？</div><div class=\"info-box-text\">従来のCSSでは<code>.card</code>のようなコンポーネント用クラスを作成しますが、Tailwindでは<code>p-4 bg-white rounded-lg shadow</code>のように、単一目的のクラスを組み合わせます。</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">従来のCSSとの比較</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">従来のCSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- HTML --&gt;\n&lt;div class=\"card\"&gt;\n  &lt;h2 class=\"card-title\"&gt;タイトル&lt;/h2&gt;\n  &lt;p class=\"card-text\"&gt;説明文&lt;/p&gt;\n&lt;/div&gt;\n\n/* CSS */\n.card {\n  padding: 1rem;\n  background: white;\n  border-radius: 0.5rem;\n  box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n}\n.card-title {\n  font-size: 1.25rem;\n  font-weight: bold;\n  margin-bottom: 0.5rem;\n}\n.card-text {\n  color: #6b7280;\n}</code></pre></div></div><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- CSSファイル不要！ --&gt;\n&lt;div class=\"p-4 bg-white rounded-lg shadow\"&gt;\n  &lt;h2 class=\"text-xl font-bold mb-2\"&gt;タイトル&lt;/h2&gt;\n  &lt;p class=\"text-gray-500\"&gt;説明文&lt;/p&gt;\n&lt;/div&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">スペーシング（余白）</h2><p class=\"content-text\">Tailwindのスペーシングは4pxを基準にしたスケールを使用します。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- Padding（内側の余白） --&gt;\n&lt;div class=\"p-4\"&gt;全方向 1rem (16px)&lt;/div&gt;\n&lt;div class=\"px-4\"&gt;左右 1rem&lt;/div&gt;\n&lt;div class=\"py-2\"&gt;上下 0.5rem&lt;/div&gt;\n&lt;div class=\"pt-8\"&gt;上のみ 2rem&lt;/div&gt;\n\n&lt;!-- Margin（外側の余白） --&gt;\n&lt;div class=\"m-4\"&gt;全方向 1rem&lt;/div&gt;\n&lt;div class=\"mx-auto\"&gt;左右auto（中央寄せ）&lt;/div&gt;\n&lt;div class=\"mb-6\"&gt;下のみ 1.5rem&lt;/div&gt;\n\n&lt;!-- スペーシングスケール --&gt;\n&lt;!-- 0=0, 1=0.25rem, 2=0.5rem, 4=1rem, 8=2rem, 16=4rem --&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">色とテキスト</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- テキストの色 --&gt;\n&lt;p class=\"text-gray-900\"&gt;濃いグレー&lt;/p&gt;\n&lt;p class=\"text-blue-500\"&gt;青色&lt;/p&gt;\n&lt;p class=\"text-red-600\"&gt;赤色&lt;/p&gt;\n\n&lt;!-- 背景色 --&gt;\n&lt;div class=\"bg-white\"&gt;白背景&lt;/div&gt;\n&lt;div class=\"bg-gray-100\"&gt;薄いグレー背景&lt;/div&gt;\n&lt;div class=\"bg-blue-500\"&gt;青背景&lt;/div&gt;\n\n&lt;!-- テキストサイズ --&gt;\n&lt;p class=\"text-sm\"&gt;小さい (14px)&lt;/p&gt;\n&lt;p class=\"text-base\"&gt;標準 (16px)&lt;/p&gt;\n&lt;p class=\"text-lg\"&gt;大きい (18px)&lt;/p&gt;\n&lt;p class=\"text-xl\"&gt;より大きい (20px)&lt;/p&gt;\n&lt;p class=\"text-2xl\"&gt;見出し向け (24px)&lt;/p&gt;\n\n&lt;!-- フォントの太さ --&gt;\n&lt;p class=\"font-normal\"&gt;通常&lt;/p&gt;\n&lt;p class=\"font-medium\"&gt;やや太い&lt;/p&gt;\n&lt;p class=\"font-bold\"&gt;太字&lt;/p&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">Flexboxレイアウト</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- 横並び --&gt;\n&lt;div class=\"flex\"&gt;\n  &lt;div&gt;アイテム1&lt;/div&gt;\n  &lt;div&gt;アイテム2&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- 中央寄せ --&gt;\n&lt;div class=\"flex justify-center items-center\"&gt;\n  &lt;div&gt;中央に配置&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- 両端揃え --&gt;\n&lt;div class=\"flex justify-between\"&gt;\n  &lt;div&gt;左&lt;/div&gt;\n  &lt;div&gt;右&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- 縦並び --&gt;\n&lt;div class=\"flex flex-col\"&gt;\n  &lt;div&gt;上&lt;/div&gt;\n  &lt;div&gt;下&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- 間隔を空ける --&gt;\n&lt;div class=\"flex gap-4\"&gt;\n  &lt;div&gt;アイテム1&lt;/div&gt;\n  &lt;div&gt;アイテム2&lt;/div&gt;\n&lt;/div&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">Gridレイアウト</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- 3列グリッド --&gt;\n&lt;div class=\"grid grid-cols-3 gap-4\"&gt;\n  &lt;div&gt;1&lt;/div&gt;\n  &lt;div&gt;2&lt;/div&gt;\n  &lt;div&gt;3&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- レスポンシブグリッド --&gt;\n&lt;div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\"&gt;\n  &lt;div&gt;カード1&lt;/div&gt;\n  &lt;div&gt;カード2&lt;/div&gt;\n  &lt;div&gt;カード3&lt;/div&gt;\n&lt;/div&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">レスポンシブデザイン</h2><p class=\"content-text\">Tailwindはモバイルファーストで、ブレークポイントのプレフィックスを使います。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- ブレークポイント --&gt;\n&lt;!-- sm: 640px以上 --&gt;\n&lt;!-- md: 768px以上 --&gt;\n&lt;!-- lg: 1024px以上 --&gt;\n&lt;!-- xl: 1280px以上 --&gt;\n\n&lt;!-- モバイルでは縦並び、PCでは横並び --&gt;\n&lt;div class=\"flex flex-col md:flex-row\"&gt;\n  &lt;div&gt;サイドバー&lt;/div&gt;\n  &lt;div&gt;メインコンテンツ&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- モバイルでは非表示、PCでは表示 --&gt;\n&lt;div class=\"hidden lg:block\"&gt;\n  PCのみ表示\n&lt;/div&gt;\n\n&lt;!-- サイズの変更 --&gt;\n&lt;div class=\"text-sm md:text-base lg:text-lg\"&gt;\n  画面サイズで文字サイズが変わる\n&lt;/div&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">ホバーとフォーカス</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- ホバー時に色を変更 --&gt;\n&lt;button class=\"bg-blue-500 hover:bg-blue-600 text-white\"&gt;\n  ボタン\n&lt;/button&gt;\n\n&lt;!-- フォーカス時にリングを表示 --&gt;\n&lt;input class=\"border focus:ring-2 focus:ring-blue-500 focus:outline-none\" /&gt;\n\n&lt;!-- トランジション --&gt;\n&lt;button class=\"bg-blue-500 hover:bg-blue-600 transition-colors duration-200\"&gt;\n  スムーズに変化\n&lt;/button&gt;\n\n&lt;!-- ホバーで拡大 --&gt;\n&lt;div class=\"transform hover:scale-105 transition-transform\"&gt;\n  ホバーで拡大\n&lt;/div&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">実践：カードコンポーネント</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;div class=\"max-w-sm rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow\"&gt;\n  &lt;img class=\"w-full h-48 object-cover\" src=\"image.jpg\" alt=\"画像\"&gt;\n  &lt;div class=\"p-6\"&gt;\n    &lt;h3 class=\"text-xl font-bold mb-2 text-gray-900\"&gt;\n      カードタイトル\n    &lt;/h3&gt;\n    &lt;p class=\"text-gray-600 mb-4\"&gt;\n      カードの説明文がここに入ります。\n    &lt;/p&gt;\n    &lt;button class=\"bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors\"&gt;\n      詳細を見る\n    &lt;/button&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">ダークモード</h2><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">Tailwind CSS</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>&lt;!-- dark: プレフィックスでダークモード時のスタイルを指定 --&gt;\n&lt;div class=\"bg-white dark:bg-gray-800\"&gt;\n  &lt;h1 class=\"text-gray-900 dark:text-white\"&gt;\n    ダークモード対応\n  &lt;/h1&gt;\n  &lt;p class=\"text-gray-600 dark:text-gray-300\"&gt;\n    自動的に切り替わります\n  &lt;/p&gt;\n&lt;/div&gt;</code></pre></div></div></div>",
+  "exercises": [
+    {
+      "question": "Tailwind CSSの特徴として正しいものはどれですか？",
+      "options": [
+        "コンポーネントベースのフレームワーク",
+        "ユーティリティファーストのフレームワーク",
+        "JavaScriptベースのフレームワーク",
+        "サーバーサイドのフレームワーク"
+      ],
+      "answer": 1,
+      "explanation": "Tailwind CSSはユーティリティファーストのCSSフレームワークで、小さな単一目的のクラスを組み合わせてスタイリングします。"
+    },
+    {
+      "question": "Tailwindで「padding: 1rem」を適用するクラスはどれですか？",
+      "options": [
+        "padding-4",
+        "p-4",
+        "pd-1rem",
+        "space-4"
+      ],
+      "answer": 1,
+      "explanation": "Tailwindでは「p-4」がpadding: 1rem（16px）を意味します。数字は4の倍数でスケールされます（4 = 1rem）。"
+    },
+    {
+      "question": "Tailwindで背景色を青にするクラスはどれですか？",
+      "options": [
+        "background-blue",
+        "color-blue-500",
+        "bg-blue-500",
+        "blue-bg"
+      ],
+      "answer": 2,
+      "explanation": "Tailwindでは「bg-」プレフィックスで背景色を指定し、「blue-500」のように色名と濃さ（100〜900）を組み合わせます。"
+    },
+    {
+      "question": "Tailwindでレスポンシブデザインを実現するために使用するプレフィックスはどれですか？（768px以上の場合）",
+      "options": [
+        "@media",
+        "responsive:",
+        "md:",
+        "tablet:"
+      ],
+      "answer": 2,
+      "explanation": "Tailwindでは「md:」プレフィックスで768px以上の画面サイズに適用するスタイルを指定します。sm:, lg:, xl:なども使えます。"
+    },
+    {
+      "question": "Tailwindでホバー時にスタイルを適用するにはどうしますか？",
+      "options": [
+        ":hover クラスを追加する",
+        "hover: プレフィックスを使う",
+        "onHover 属性を使う",
+        "hover() 関数を使う"
+      ],
+      "answer": 1,
+      "explanation": "Tailwindでは「hover:bg-blue-600」のように、hover:プレフィックスを使ってホバー時のスタイルを指定します。"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+---
+/**
+ * LessonCardコンポーネント
+ * アイコン、タイトル、説明、カテゴリバッジを表示
+ * Requirements: 4.3
+ */
+
+import type { LessonCategory } from '../types/lesson';
+import { getCategoryLabel } from '../types/lesson';
+
+interface Props {
+  /** レッスンID */
+  id: string;
+  /** アイコン（絵文字） */
+  icon: string;
+  /** レッスンタイトル */
+  title: string;
+  /** レッスンの説明 */
+  description: string;
+  /** レッスンカテゴリ */
+  category: LessonCategory;
+}
+
+const { id, icon, title, description, category } = Astro.props;
+
+const basePath = import.meta.env.BASE_URL || '/teach-site/';
+const href = `${basePath}lessons/${id}/`;
+const categoryLabel = getCategoryLabel(category);
+---
+
+<a href={href} class="card" data-lesson-id={id}>
+  <div class="card-header">
+    <span class="card-icon">{icon}</span>
+    <span class:list={['card-badge', category]}>{categoryLabel}</span>
+  </div>
+  <h3 class="card-title">{title}</h3>
+  <p class="card-description">{description}</p>
+</a>
+
+<style>
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card:hover {
+    border-color: var(--color-primary);
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card-icon {
+    font-size: 1.75rem;
+  }
+
+  .card-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+  }
+
+  .card-badge.html { background: rgba(228, 77, 38, 0.1); color: var(--color-html); }
+  .card-badge.css { background: rgba(38, 77, 228, 0.1); color: var(--color-css); }
+  .card-badge.js { background: rgba(217, 195, 0, 0.1); color: var(--color-js); }
+  .card-badge.ts { background: rgba(49, 120, 198, 0.1); color: var(--color-ts); }
+  .card-badge.react { background: rgba(0, 216, 255, 0.1); color: var(--color-react); }
+  .card-badge.tailwind { background: rgba(6, 182, 212, 0.1); color: var(--color-tailwind); }
+  .card-badge.git { background: rgba(240, 80, 50, 0.1); color: var(--color-git); }
+
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+  }
+
+  .card-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

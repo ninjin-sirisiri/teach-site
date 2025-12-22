@@ -1,0 +1,42 @@
+{
+  "id": "js-advanced",
+  "category": "js",
+  "title": "JavaScript 応用",
+  "description": "非同期処理、モジュールシステム、エラーハンドリングなど、実践的なJavaScriptを学びます。",
+  "content": "<div class=\"content-section\"><h2 class=\"section-title\">🔄 非同期処理とは</h2><p class=\"content-text\">JavaScriptは<strong>シングルスレッド</strong>で動作しますが、非同期処理により時間のかかる操作（ネットワークリクエスト、ファイル読み込みなど）を効率的に処理できます。</p><div class=\"info-box\"><div class=\"info-box-icon\">💡</div><div class=\"info-box-content\"><div class=\"info-box-title\">同期 vs 非同期</div><div class=\"info-box-text\">同期処理は上から順番に実行されますが、非同期処理は「待つ間に別の処理を進める」ことができます。</div></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">📦 Promise</h2><p class=\"content-text\">Promiseは非同期処理の結果を表すオブジェクトです。成功（resolve）または失敗（reject）の状態を持ちます。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>// Promiseの基本\nconst fetchData = () => {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      const success = true;\n      if (success) {\n        resolve({ data: \"データ取得成功!\" });\n      } else {\n        reject(new Error(\"取得失敗\"));\n      }\n    }, 1000);\n  });\n};\n\n// Promiseの使用\nfetchData()\n  .then(result => console.log(result.data))\n  .catch(error => console.error(error))\n  .finally(() => console.log(\"処理完了\"));</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">⏳ async/await</h2><p class=\"content-text\"><code>async/await</code>はPromiseをより読みやすく書くための構文です。まるで同期処理のように非同期コードを書けます。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>// async/awaitを使った非同期処理\nasync function loadUserData() {\n  try {\n    console.log(\"データ取得中...\");\n    \n    const response = await fetch('https://api.example.com/user');\n    const user = await response.json();\n    \n    console.log(\"ユーザー:\", user.name);\n    return user;\n  } catch (error) {\n    console.error(\"エラー:\", error.message);\n    throw error;\n  }\n}\n\n// 複数の非同期処理を並列実行\nasync function loadAllData() {\n  const [users, posts] = await Promise.all([\n    fetch('/api/users').then(r => r.json()),\n    fetch('/api/posts').then(r => r.json())\n  ]);\n  return { users, posts };\n}</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">📁 モジュールシステム</h2><p class=\"content-text\">ES Modulesを使って、コードを複数のファイルに分割し、再利用可能にします。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript (math.js)</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>// 名前付きエクスポート\nexport const PI = 3.14159;\n\nexport function add(a, b) {\n  return a + b;\n}\n\nexport function multiply(a, b) {\n  return a * b;\n}\n\n// デフォルトエクスポート\nexport default class Calculator {\n  calculate(expression) {\n    return eval(expression);\n  }\n}</code></pre></div></div><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript (main.js)</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>// インポート\nimport Calculator, { PI, add, multiply } from './math.js';\n\nconsole.log(PI);                  // 3.14159\nconsole.log(add(2, 3));           // 5\nconsole.log(multiply(4, 5));     // 20\n\nconst calc = new Calculator();\nconsole.log(calc.calculate('2 + 2')); // 4</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">⚠️ エラーハンドリング</h2><p class=\"content-text\">堅牢なアプリケーションのためには、適切なエラーハンドリングが不可欠です。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>// カスタムエラークラス\nclass ValidationError extends Error {\n  constructor(message, field) {\n    super(message);\n    this.name = 'ValidationError';\n    this.field = field;\n  }\n}\n\n// エラーをスローして捕捉\nfunction validateAge(age) {\n  if (typeof age !== 'number') {\n    throw new ValidationError('年齢は数値で入力してください', 'age');\n  }\n  if (age < 0 || age > 150) {\n    throw new ValidationError('有効な年齢を入力してください', 'age');\n  }\n  return true;\n}\n\ntry {\n  validateAge('二十歳');\n} catch (error) {\n  if (error instanceof ValidationError) {\n    console.error(`フィールド: ${error.field}, メッセージ: ${error.message}`);\n  } else {\n    throw error; // 予期しないエラーは再スロー\n  }\n}</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">🔧 実践的なパターン</h2><h3 style=\"margin: 1rem 0 0.5rem; color: var(--text-primary);\">デバウンスとスロットリング</h3><p class=\"content-text\">パフォーマンス最適化のための重要なテクニックです。</p><div class=\"code-block\"><div class=\"code-header\"><span class=\"code-lang\">JavaScript</span><button class=\"code-copy\" onclick=\"copyCode(this)\">コピー</button></div><div class=\"code-content\"><pre><code>// デバウンス: 最後の呼び出しから一定時間後に実行\nfunction debounce(func, wait) {\n  let timeout;\n  return function (...args) {\n    clearTimeout(timeout);\n    timeout = setTimeout(() => func.apply(this, args), wait);\n  };\n}\n\n// 使用例: 検索入力\nconst searchInput = document.getElementById('search');\nsearchInput.addEventListener('input', debounce((e) => {\n  console.log('検索:', e.target.value);\n}, 300));\n\n// スロットリング: 一定間隔で実行\nfunction throttle(func, limit) {\n  let inThrottle;\n  return function (...args) {\n    if (!inThrottle) {\n      func.apply(this, args);\n      inThrottle = true;\n      setTimeout(() => inThrottle = false, limit);\n    }\n  };\n}\n\n// 使用例: スクロールイベント\nwindow.addEventListener('scroll', throttle(() => {\n  console.log('スクロール位置:', window.scrollY);\n}, 100));</code></pre></div></div></div><div class=\"content-section\"><h2 class=\"section-title\">📝 まとめ</h2><ul><li><strong>Promise</strong>: 非同期処理の結果を表すオブジェクト</li><li><strong>async/await</strong>: Promiseをより読みやすく書くシンタックスシュガー</li><li><strong>ES Modules</strong>: コードを分割して再利用可能にする</li><li><strong>エラーハンドリング</strong>: try/catchで適切にエラーを処理</li><li><strong>デバウンス/スロットリング</strong>: パフォーマンス最適化のテクニック</li></ul></div>",
+  "exercises": [
+    {
+      "question": "async関数は何を返しますか？",
+      "options": [
+        "undefined",
+        "Promise",
+        "boolean",
+        "Object"
+      ],
+      "answer": 1,
+      "explanation": "async関数は常にPromiseを返します。戻り値は自動的にPromise.resolve()でラップされます。"
+    },
+    {
+      "question": "Promise.all()の動作として正しいのはどれですか？",
+      "options": [
+        "最初に完了したPromiseの結果を返す",
+        "すべてのPromiseが完了するまで待ち、結果を配列で返す",
+        "順番にPromiseを実行する",
+        "エラーが発生しても処理を続ける"
+      ],
+      "answer": 1,
+      "explanation": "Promise.all()はすべてのPromiseが解決されるまで待ち、結果を配列として返します。一つでも失敗すると全体が失敗します。"
+    },
+    {
+      "question": "デバウンスの主な用途として適切なのはどれですか？",
+      "options": [
+        "APIレスポンスの高速化",
+        "検索入力時のAPI呼び出し回数を減らす",
+        "ページ読み込み速度の向上",
+        "メモリ使用量の削減"
+      ],
+      "answer": 1,
+      "explanation": "デバウンスは、ユーザーの入力が止まってから処理を実行するため、検索入力時のAPI呼び出し回数を減らすのに最適です。"
+    }
+  ]
+}
