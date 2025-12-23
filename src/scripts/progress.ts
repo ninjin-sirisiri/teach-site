@@ -14,7 +14,7 @@ import {
 const STORAGE_KEY = 'webdevlearn_progress';
 
 /** 総レッスン数（固定値） */
-const TOTAL_LESSONS = 16;
+const TOTAL_LESSONS = 26;
 
 /**
  * LocalStorageが利用可能かどうかを確認する

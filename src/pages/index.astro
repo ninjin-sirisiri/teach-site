@@ -45,7 +45,17 @@ const lessonIcons: Record<string, string> = {
   'git-intro': '\u{1F527}',
   'github-basics': '\u{1F419}',
   'deploy-guide': '\u{1F680}',
-  'react-basics': '\u{269B}\u{FE0F}',
+  'nodejs-intro': '\u{1F49A}',
+  'npm-basics': '\u{1F4E6}',
+  'eslint-prettier': '\u{2728}',
+  'react-intro': '\u{269B}\u{FE0F}',
+  'react-jsx': '\u{1F4DD}',
+  'react-components': '\u{1F9E9}',
+  'react-state': '\u{1F504}',
+  'react-events': '\u{1F5B1}\u{FE0F}',
+  'react-hooks': '\u{1FA9D}',
+  'react-effects': '\u{26A1}',
+  'react-patterns': '\u{1F3D7}\u{FE0F}',
   'tailwind-basics': '\u{1F30A}',
 };
 
@@ -70,12 +80,16 @@ const sections: Section[] = [
   },
   {
     title: '\u{1F6E0}\u{FE0F} ツール',
-    ids: ['git-intro', 'github-basics', 'deploy-guide'],
+    ids: ['nodejs-intro', 'npm-basics', 'eslint-prettier', 'git-intro', 'github-basics', 'deploy-guide'],
   },
   {
-    title: '\u{2699}\u{FE0F} フレームワーク',
-    ids: ['react-basics', 'tailwind-basics'],
+    title: '\u{269B}\u{FE0F} React',
+    ids: ['react-intro', 'react-jsx', 'react-components', 'react-state', 'react-events', 'react-hooks', 'react-effects', 'react-patterns'],
   },
+  {
+    title: '\u{1F3A8} Tailwind CSS',
+    ids: ['tailwind-basics'],
+  }
 ];
 
 // レッスンをIDでマップ化
@@ -161,15 +175,25 @@ const basePath = import.meta.env.BASE_URL || '/teach-site/';
     'js-advanced': 'JavaScript応用',
     'ts-intro': 'TypeScriptとは',
     'ts-basics': 'TypeScript基礎',
+    'nodejs-intro': 'Node.js入門',
+    'npm-basics': 'npm基礎',
+    'eslint-prettier': 'ESLint & Prettier',
     'git-intro': 'Git入門',
     'github-basics': 'GitHubの基本',
     'deploy-guide': 'デプロイガイド',
-    'react-basics': 'React入門',
+    'react-intro': 'React入門',
+    'react-jsx': 'JSX構文',
+    'react-components': 'Reactコンポーネント',
+    'react-state': 'Reactの状態管理',
+    'react-events': 'Reactイベント処理',
+    'react-hooks': 'React Hooks',
+    'react-effects': 'React Effects',
+    'react-patterns': 'Reactパターン',
     'tailwind-basics': 'Tailwind CSS',
   };
 
   function updateProgressDisplay() {
-    const totalLessons = 16;
+    const totalLessons = 26;
     const completedCount = getCompletedCount();
     const percentage = getProgressPercentage(totalLessons);
 
